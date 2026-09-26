@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://src/entities/npc.gd" id="1_npc"]
+
+[sub_resource type="CircleShape2D" id="body_shape"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="talk_shape"]
+radius = 10.0
+
+[node name="NPC" type="StaticBody2D"]
+script = ExtResource("1_npc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("body_shape")
+
+[node name="Interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("talk_shape")
+
+[node name="NameLabel" type="Label" parent="."]

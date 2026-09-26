@@ -1,0 +1,124 @@
+{
+  "school": {
+    "name": "IES Sarriguren",
+    "rows": [
+      "########################################",
+      "#...........#.............#............#",
+      "#...........#.............#............#",
+      "#...........#.............#............#",
+      "#...........#.............#............#",
+      "#...........#.............#............#",
+      "#####.#######.....#########.....########",
+      "#......................................#",
+      "#......................................#",
+      "######.###############.#################",
+      ",,,,,,=,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,",
+      ",,,,,,=================,,,,,,,,,,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,=======,,,,",
+      ",,,,,,=,,,,~~~~~,,,,,,,,,,,,,=======,,,,",
+      ",,,,,,=,,,,~~~~~,,,,,,,,,,,,,=======,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,=======,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,wwww,,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,wwwwww,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,wwww,,,,,,,,,",
+      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      "TTTTTT=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+      "TTTTTT=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+    ],
+    "spawns": {
+      "start": [6, 20],
+      "from_home": [6, 20]
+    },
+    "entities": [
+      {"type": "door", "x": 6, "y": 22, "to": "home", "spawn": "from_school", "label": "To Unai's house"},
+      {
+        "type": "spot", "name": "Classroom", "color": "#6a4c93", "x": 6, "y": 3,
+        "dialogues": [
+          {"id": "basque_class", "if": {"day_at_least": 1, "time_between": ["08:00", "13:30"], "not_flag_today": "basque_class"}},
+          {"id": "classroom_default"}
+        ]
+      },
+      {
+        "type": "spot", "name": "Canteen", "color": "#e9c46a", "x": 17, "y": 3,
+        "dialogues": [
+          {"id": "canteen_almuerzo", "if": {"time_between": ["10:30", "11:30"], "not_flag_today": "almuerzo"}},
+          {"id": "canteen_lunch", "if": {"time_between": ["14:00", "15:30"], "not_flag_today": "lunch"}},
+          {"id": "canteen_closed"}
+        ]
+      },
+      {
+        "type": "spot", "name": "Basketball", "color": "#f4a261", "x": 32, "y": 13,
+        "dialogues": [
+          {"id": "basketball_break", "if": {"not_flag_today": "basketball"}},
+          {"id": "basketball_done"}
+        ]
+      },
+      {
+        "type": "spot", "name": "Lago", "color": "#5ac8fa", "x": 25, "y": 19,
+        "say": "Lago de Sarriguren. A duck, two coots, and a heron pretending it is not there. You take a photo. (Photo journal: next build.)"
+      },
+      {"type": "plot", "id": "garden_1", "x": 11, "y": 14},
+      {"type": "plot", "id": "garden_2", "x": 12, "y": 14},
+      {"type": "plot", "id": "garden_3", "x": 13, "y": 14},
+      {"type": "plot", "id": "garden_4", "x": 14, "y": 14},
+      {"type": "plot", "id": "garden_5", "x": 15, "y": 14},
+      {
+        "type": "npc", "id": "maite", "name": "Maite", "color": "#6a4c93", "x": 33, "y": 3,
+        "dialogues": [
+          {"id": "maite_welcome", "if": {"not_flag": "maite_welcome"}},
+          {"id": "maite_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "iker", "name": "Iker", "color": "#2a9d8f", "x": 20, "y": 8,
+        "dialogues": [
+          {"id": "iker_1", "if": {"not_flag": "iker_1"}},
+          {"id": "iker_2", "if": {"not_flag": "iker_2"}},
+          {"id": "iker_3", "if": {"not_flag": "iker_3"}},
+          {"id": "iker_joke", "if": {"flag": "iker_3", "not_stamp": "make_laugh"}},
+          {"id": "iker_4", "if": {"not_flag": "iker_4"}},
+          {"id": "iker_5", "if": {"not_flag": "iker_5"}},
+          {"id": "iker_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "goncalo", "name": "Gonçalo", "color": "#e9c46a", "x": 14, "y": 8,
+        "dialogues": [
+          {"id": "goncalo_embarazado", "if": {"not_flag": "ff_embarazado"}},
+          {"id": "goncalo_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "tiago", "name": "Tiago", "color": "#8ecae6", "x": 3, "y": 8,
+        "dialogues": [
+          {"id": "tiago_homesick", "if": {"not_flag": "tiago_talked"}},
+          {"id": "tiago_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "rafael", "name": "Rafael", "color": "#588157", "x": 10, "y": 15,
+        "dialogues": [
+          {"id": "rafael_seeds", "if": {"not_flag": "rafael_seeds"}},
+          {"id": "rafael_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "duarte", "name": "Duarte", "color": "#1d3f8a", "x": 30, "y": 17,
+        "dialogues": [{"id": "duarte_default"}]
+      },
+      {
+        "type": "npc", "id": "leonor", "name": "Leonor", "color": "#f4a261", "x": 34, "y": 16,
+        "dialogues": [{"id": "leonor_default"}]
+      },
+      {
+        "type": "npc", "id": "unai_school", "name": "Unai", "color": "#d95f3b", "x": 24, "y": 11,
+        "dialogues": [
+          {"id": "unai_school_pelota", "if": {"not_flag": "pelota_deal"}},
+          {"id": "unai_school_default"}
+        ]
+      }
+    ]
+  }
+}

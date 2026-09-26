@@ -1,0 +1,12 @@
+{
+  "kaixo": {"basque": "kaixo", "meaning": "hello"},
+  "egun_on": {"basque": "egun on", "meaning": "good morning"},
+  "eskerrik_asko": {"basque": "eskerrik asko", "meaning": "thank you"},
+  "agur": {"basque": "agur", "meaning": "goodbye"},
+  "bai": {"basque": "bai", "meaning": "yes"},
+  "ez": {"basque": "ez", "meaning": "no"},
+  "txuri": {"basque": "txuri", "meaning": "white"},
+  "aitona": {"basque": "aitona", "meaning": "grandfather"},
+  "amona": {"basque": "amona", "meaning": "grandmother"},
+  "herrimina": {"basque": "herrimina", "meaning": "homesickness"}
+}

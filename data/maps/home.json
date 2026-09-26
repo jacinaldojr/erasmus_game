@@ -1,0 +1,72 @@
+{
+  "home": {
+    "name": "Unai's house, Sarriguren",
+    "rows": [
+      "########################",
+      "#..........#...........#",
+      "#..........#...........#",
+      "#..........#...........#",
+      "#......................#",
+      "#####.######...........#",
+      "#......................#",
+      "#......................#",
+      "#.......cc.............#",
+      "#.......cc.............#",
+      "########.###############",
+      ",,,,,,,,=,,,,,,,,,,,,,,,",
+      ",,,,,,,,=,,,,,,,,,,,,,,,",
+      "TTTTTTTT=TTTTTTTTTTTTTTT"
+    ],
+    "spawns": {
+      "start": [6, 7],
+      "bed": [4, 3],
+      "from_school": [8, 11]
+    },
+    "entities": [
+      {"type": "bed", "x": 2, "y": 2},
+      {"type": "door", "x": 8, "y": 13, "to": "school", "spawn": "from_home", "label": "To IES Sarriguren"},
+      {
+        "type": "npc", "id": "arantxa", "name": "Arantxa", "color": "#c8433f", "x": 18, "y": 8,
+        "dialogues": [
+          {"id": "arantxa_dinner_day0", "if": {"day": 0, "time_between": ["21:30", "23:30"], "not_flag_today": "dinner_done"}},
+          {"id": "arantxa_welcome", "if": {"day": 0, "not_flag": "met_arantxa"}},
+          {"id": "arantxa_wait", "if": {"day": 0, "not_flag_today": "dinner_done"}},
+          {"id": "arantxa_after_dinner", "if": {"day": 0}},
+          {"id": "arantxa_breakfast", "if": {"day_at_least": 1, "time_between": ["07:00", "09:30"], "not_flag_today": "breakfast"}},
+          {"id": "arantxa_dinner_generic", "if": {"day_at_least": 1, "time_between": ["21:30", "23:30"], "not_flag_today": "dinner_done"}},
+          {"id": "arantxa_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "unai", "name": "Unai", "color": "#d95f3b", "x": 16, "y": 2,
+        "dialogues": [
+          {"id": "unai_sunday", "if": {"not_flag": "met_unai"}},
+          {"id": "unai_card", "if": {"flag": "fool_card", "not_flag": "asked_unai_card"}},
+          {"id": "unai_home"}
+        ]
+      },
+      {
+        "type": "npc", "id": "nahia", "name": "Nahia", "color": "#e08fc0", "x": 20, "y": 3,
+        "dialogues": [{"id": "nahia_default"}]
+      },
+      {
+        "type": "npc", "id": "inaki", "name": "Iñaki", "color": "#4a6fa5", "x": 14, "y": 7,
+        "dialogues": [
+          {"id": "inaki_linkin_park", "if": {"not_flag": "inaki_lp"}},
+          {"id": "inaki_default"}
+        ]
+      },
+      {
+        "type": "npc", "id": "aitona", "name": "Aitona Joxemari", "color": "#8c8c8c", "x": 4, "y": 8,
+        "dialogues": [
+          {"id": "aitona_challenge", "if": {"not_flag": "chess_promised"}},
+          {"id": "aitona_wait"}
+        ]
+      },
+      {
+        "type": "npc", "id": "txuri", "name": "Txuri", "color": "#f8f8f8", "shape": "dog", "x": 10, "y": 7,
+        "dialogues": [{"id": "txuri_default"}]
+      }
+    ]
+  }
+}

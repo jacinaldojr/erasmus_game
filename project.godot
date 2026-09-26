@@ -1,0 +1,36 @@
+; Engine configuration file.
+; Godot 4.x project. Input actions are registered in code (src/autoload/events.gd)
+; so the whole project stays diff-friendly and editable without the editor.
+
+config_version=5
+
+[application]
+
+config/name="Erasmus Game"
+config/description="Cozy one-week Erasmus+ school exchange to Sarriguren (MVP)"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://src/autoload/events.gd"
+Content="*res://src/autoload/content.gd"
+GameState="*res://src/autoload/game_state.gd"
+DialogueRunner="*res://src/autoload/dialogue_runner.gd"
+SaveManager="*res://src/autoload/save_manager.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

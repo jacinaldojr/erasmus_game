@@ -1,0 +1,163 @@
+{
+  "arantxa_welcome": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¡Hola, Vinícius! Bienvenido a casa. Soy Arantxa, la madre de Unai. ¿Tienes hambre? La cena es a las nueve y media.", "translation": "Hi Vinícius! Welcome home. I'm Arantxa, Unai's mom. Hungry? Dinner is at half past nine.", "next": "n2"},
+      "n2": {"text": "Nine and a half. It is 19:00. You have been hungry since the bus passed Burgos.", "choices": [
+        {"text": "\"Obrigado! Sim, um bocadinho de fome...\"", "next": "n3"},
+        {"text": "Smile and nod. Nodding is universal.", "next": "n3b"}
+      ]},
+      "n3": {"speaker": "Arantxa", "text": "¡Ay, qué majo! Toma unas galletas mientras tanto. Tu habitación está arriba, a la izquierda.", "translation": "Oh, how sweet! Have some biscuits meanwhile. Your room is upstairs, on the left.", "effects": [{"energy": 10}, {"friendship": {"who": "arantxa", "value": 1}}], "next": "end"},
+      "n3b": {"speaker": "Arantxa", "text": "Vale, vale. Tu habitación está arriba, a la izquierda. ¡A las nueve y media!", "translation": "Okay, okay. Your room is upstairs, on the left. Half past nine!", "next": "end"},
+      "end": {"effects": [{"flag": "met_arantxa"}, {"log": "Met Arantxa. Dinner is at 21:30. Twenty-one thirty."}]}
+    }
+  },
+  "arantxa_wait": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "Todavía no. A las nueve y media. ¡Paciencia, que la menestra no se hace sola!", "translation": "Not yet. Half past nine. Patience, the menestra doesn't cook itself!"}
+    }
+  },
+  "arantxa_dinner_day0": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¡A cenar! He hecho menestra, mi plato estrella. Guisantes, alcachofas, espárragos, judías verdes...", "translation": "Dinner! I made menestra, my star dish. Peas, artichokes, asparagus, green beans...", "next": "n2"},
+      "n2": {"text": "Peas. A whole stew built around peas. Under the table, Txuri looks up at you with the eyes of a professional.", "choices": [
+        {"text": "Eat the peas. All of them. For Portugal.", "next": "eat"},
+        {"text": "Slip the peas to Txuri, one spoon at a time.", "next": "dog"}
+      ]},
+      "eat": {"text": "You chew. You swallow. You do not make a face. Somewhere, a diplomat is proud.", "effects": [{"energy": 10}, {"friendship": {"who": "arantxa", "value": 2}}, {"log": "Ate a plate of menestra. Every pea."}], "next": "eat2"},
+      "eat2": {"speaker": "Arantxa", "text": "¿Y? ¿Te gusta?", "translation": "And? Do you like it?", "choices": [
+        {"text": "\"Está... esquisito!\"", "next": "esq"},
+        {"text": "\"Está muy bueno.\"", "next": "bueno"}
+      ]},
+      "esq": {"speaker": "Arantxa", "text": "¡¿Exquisito?! ¡Iñaki, ha dicho que está exquisito!", "translation": "Exquisite?! Iñaki, he said it's exquisite!", "next": "esq2"},
+      "esq2": {"text": "In Portuguese, 'esquisito' means weird. In Spanish, 'exquisito' means delicious. You just paid the biggest compliment of your life by accident. Keep it.", "effects": [{"flag": "ff_esquisito"}, {"friendship": {"who": "arantxa", "value": 2}}, {"log": "Told Arantxa the menestra was 'esquisito'. She was thrilled. (Portuguese: weird. Spanish: delicious.)"}], "next": "end"},
+      "bueno": {"speaker": "Arantxa", "text": "¡Me alegro! Mañana, tortilla.", "translation": "I'm glad! Tomorrow, tortilla.", "effects": [{"friendship": {"who": "arantxa", "value": 1}}], "next": "end"},
+      "dog": {"text": "Txuri accepts the peas in silence. Then a second spoon. Then Nahia's voice:", "next": "dog2"},
+      "dog2": {"speaker": "Nahia", "text": "¡Mamá! ¡El perro está comiendo guisantes!", "translation": "Mom! The dog is eating peas!", "next": "dog3"},
+      "dog3": {"speaker": "Arantxa", "text": "¡Txuri! ... Vinícius, ¿no te gustan los guisantes? ¡Haberlo dicho, hombre!", "translation": "Txuri! ... Vinícius, you don't like peas? You should have said!", "choices": [
+        {"text": "\"Sorry... I really, really don't like peas.\"", "next": "honest"},
+        {"text": "\"...Txuri was hungry?\"", "next": "blame"}
+      ]},
+      "honest": {"speaker": "Arantxa", "text": "Pues tortilla y ya está. Aquí no se pasa hambre.", "translation": "Then tortilla, and that's that. Nobody goes hungry in this house.", "effects": [{"flag": "peas_known"}, {"friendship": {"who": "arantxa", "value": 1}}, {"friendship": {"who": "txuri", "value": 2}}, {"energy": 15}, {"log": "Fed the peas to Txuri. Got caught. Got tortilla."}], "next": "end"},
+      "blame": {"speaker": "Arantxa", "text": "Ya. Y yo soy la reina de Navarra. Anda, tortilla.", "translation": "Sure. And I'm the queen of Navarre. Come on, tortilla.", "effects": [{"friendship": {"who": "txuri", "value": 2}}, {"energy": 15}, {"log": "Fed the peas to Txuri and blamed the dog. Got tortilla anyway."}], "next": "end"},
+      "end": {"speaker": "Arantxa", "text": "Mañana hay almuerzo a las once en el instituto. Unai te enseña. ¡Buenas noches!", "translation": "Tomorrow there's almuerzo at eleven at school. Unai will show you. Good night!", "effects": [{"stamp": "dinner_2130"}, {"flag_today": "dinner_done"}, {"time": 45}, {"energy": 15}]}
+    }
+  },
+  "arantxa_after_dinner": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¿Cansado? Tu cama está arriba. Mañana, a las siete. ¡Egun on!", "translation": "Tired? Your bed is upstairs. Tomorrow, seven o'clock. Good morning!"}
+    }
+  },
+  "arantxa_breakfast": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¡Egun on! Desayuna algo. Y a las once, almuerzo, que aquí la comida es a las dos.", "translation": "Morning! Eat something. And almuerzo at eleven, because lunch here is at two.", "effects": [{"energy": 20}, {"flag_today": "breakfast"}, {"time": 15}, {"log": "Breakfast at Unai's. Lunch here is at 14:00, which feels like a prank."}]}
+    }
+  },
+  "arantxa_dinner_generic": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¡A cenar! Hoy, tortilla de patatas. Sin guisantes.", "translation": "Dinner! Today, potato omelette. No peas.", "choices": [
+        {"text": "\"¡Exquisito!\"", "if": {"flag": "ff_esquisito"}, "next": "ex"},
+        {"text": "\"Muito obrigado.\"", "next": "ok"}
+      ]},
+      "ex": {"speaker": "Arantxa", "text": "¡Ese es mi portugués!", "translation": "That's my Portuguese boy!", "effects": [{"friendship": {"who": "arantxa", "value": 2}}], "next": "end"},
+      "ok": {"speaker": "Arantxa", "text": "De nada, cariño. Come, come.", "translation": "You're welcome, dear. Eat, eat.", "effects": [{"friendship": {"who": "arantxa", "value": 1}}], "next": "end"},
+      "end": {"effects": [{"energy": 30}, {"flag_today": "dinner_done"}, {"time": 40}, {"log": "Dinner at 21:30. Getting used to it. Almost."}]}
+    }
+  },
+  "arantxa_default": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Arantxa", "text": "¿Todo bien? La cena a las nueve y media. No lo olvides.", "translation": "All good? Dinner at half past nine. Don't forget."}
+    }
+  },
+  "unai_sunday": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Unai", "text": "Kaixo.", "next": "n2"},
+      "n2": {"text": "That's it. That's the greeting. Then he looks back at his phone.", "choices": [
+        {"text": "\"Kaixo... means hello?\"", "next": "u2"},
+        {"text": "\"...Jajaja?\"", "next": "u2b"}
+      ]},
+      "u2": {"speaker": "Unai", "text": "Sí. Es euskera. Aquí hablamos castellano y euskera. Jajaja.", "translation": "Yes. It's Basque. Here we speak Spanish and Basque. Hahaha.", "next": "end"},
+      "u2b": {"speaker": "Unai", "text": "Jajaja. Kaixo es 'hola' en euskera.", "translation": "Hahaha. Kaixo is 'hello' in Basque.", "next": "end"},
+      "end": {"effects": [{"word": "kaixo"}, {"flag": "met_unai"}, {"friendship": {"who": "unai", "value": 1}}, {"log": "Met Unai. He says 'jajaja' out loud, like in the chat."}]}
+    }
+  },
+  "unai_card": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Unai", "text": "Jajaja. ¿Has visto la carta debajo de la almohada? ...Yo no he sido.", "translation": "Hahaha. Did you see the card under the pillow? ...It wasn't me.", "choices": [
+        {"text": "\"The Fool? Who put it there?\"", "next": "n2"},
+        {"text": "\"Jajaja.\"", "next": "n3"}
+      ]},
+      "n2": {"speaker": "Unai", "text": "No sé. En serio. Pero el año pasado a mi prima le pasó lo mismo en Gaia.", "translation": "I don't know. Seriously. But last year the same thing happened to my cousin in Gaia.", "effects": [{"log": "Unai swears he didn't plant the tarot card. His cousin got one in Gaia last year."}], "next": "end"},
+      "n3": {"speaker": "Unai", "text": "Jajaja.", "next": "end"},
+      "end": {"effects": [{"flag": "asked_unai_card"}]}
+    }
+  },
+  "unai_home": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Unai", "text": "Jajaja.", "branch": [
+        {"if": {"day_at_least": 1}, "next": "n2"}
+      ]},
+      "n2": {"speaker": "Unai", "text": "Mañana pelota vasca. Tú, baloncesto. Trato. Jajaja.", "translation": "Tomorrow Basque pelota. You, basketball. Deal. Hahaha."}
+    }
+  },
+  "nahia_default": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Nahia", "text": "¿Juegas a Roblox? Tengo tres mundos. En uno hay un pollo gigante.", "translation": "Do you play Roblox? I have three worlds. One has a giant chicken.", "choices": [
+        {"text": "\"Sim! Mostra-me o frango.\"", "next": "yes"},
+        {"text": "\"Maybe later.\"", "next": "later"}
+      ]},
+      "yes": {"speaker": "Nahia", "text": "¡Vale! Después de cenar. El pollo se llama Pollo.", "translation": "Okay! After dinner. The chicken is called Chicken.", "effects": [{"friendship": {"who": "nahia", "value": 2}}, {"log": "Promised Nahia to see her Roblox chicken. It is called Chicken."}]},
+      "later": {"speaker": "Nahia", "text": "Vale. El pollo te espera.", "translation": "Fine. The chicken will wait for you."}
+    }
+  },
+  "inaki_linkin_park": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Iñaki", "text": "¿Linkin Park? ¿En serio? Yo tenía tu edad cuando salió Hybrid Theory.", "translation": "Linkin Park? Seriously? I was your age when Hybrid Theory came out.", "choices": [
+        {"text": "\"In the End is the best one.\"", "next": "best"},
+        {"text": "\"Which one is your favourite?\"", "next": "which"}
+      ]},
+      "best": {"speaker": "Iñaki", "text": "Discutible. Pero bien. Mañana en el coche, la discográfica entera.", "translation": "Debatable. But fine. Tomorrow in the car, the whole discography.", "effects": [{"friendship": {"who": "inaki", "value": 2}}, {"flag": "inaki_lp"}, {"log": "Argued with Iñaki about the best Linkin Park song. He was your age in 2000."}]},
+      "which": {"speaker": "Iñaki", "text": "Todas. Mañana en el coche te las pongo.", "translation": "All of them. Tomorrow in the car I'll play them for you.", "effects": [{"friendship": {"who": "inaki", "value": 1}}, {"flag": "inaki_lp"}, {"log": "Iñaki, architect and Linkin Park fan, promised a car-ride playlist."}]}
+    }
+  },
+  "inaki_default": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Iñaki", "text": "Esta casa está orientada al sur. Bioclimática. Te lo explico el jueves, con la ecociudad.", "translation": "This house faces south. Bioclimatic. I'll explain on Thursday, with the eco-city."}
+    }
+  },
+  "aitona_challenge": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Aitona Joxemari", "text": "¿Ajedrez? Apertura española. Ruy López, 1561. La escribió contra un portugués, Damiano. Mañana, la revancha.", "translation": "Chess? The Spanish Opening. Ruy López, 1561. He wrote it against a Portuguese, Damiano. Tomorrow, the rematch.", "choices": [
+        {"text": "\"Deal. Tomorrow. 450 years late.\"", "next": "deal"},
+        {"text": "\"Aitona... means grandfather?\"", "next": "word"}
+      ]},
+      "deal": {"speaker": "Aitona Joxemari", "text": "Bien. Trae paciencia.", "translation": "Good. Bring patience.", "effects": [{"friendship": {"who": "aitona", "value": 1}}, {"flag": "chess_promised"}, {"log": "Aitona Joxemari challenged you to a chess rematch 450 years in the making."}]},
+      "word": {"speaker": "Aitona Joxemari", "text": "Aitona, sí. Abuelo. Y amona, abuela. Mañana, ajedrez.", "translation": "Aitona, yes. Grandfather. And amona, grandmother. Tomorrow, chess.", "effects": [{"word": "aitona"}, {"friendship": {"who": "aitona", "value": 1}}, {"flag": "chess_promised"}, {"log": "Aitona Joxemari challenged you to a chess rematch. Learned what 'aitona' means."}]}
+    }
+  },
+  "aitona_wait": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"speaker": "Aitona Joxemari", "text": "Paciencia. El ajedrez es paciencia.", "translation": "Patience. Chess is patience."}
+    }
+  },
+  "txuri_default": {
+    "start": "n1",
+    "nodes": {
+      "n1": {"text": "Txuri wags his whole body. 'Txuri' means 'white' in Basque. Txuri is, in fact, very white.", "effects": [{"word": "txuri"}, {"friendship": {"who": "txuri", "value": 1}}]}
+    }
+  }
+}

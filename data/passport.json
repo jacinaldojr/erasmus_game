@@ -1,0 +1,40 @@
+{
+  "goals": [
+    {
+      "id": "people",
+      "name": "People",
+      "stamps": [
+        {"id": "make_laugh", "name": "Make a Spanish classmate laugh on purpose", "mvp": true},
+        {"id": "win_3x3", "name": "Win the mixed 3x3 on Friday", "mvp": false},
+        {"id": "unai_secret", "name": "Discover Unai's secret", "mvp": false}
+      ]
+    },
+    {
+      "id": "cultures",
+      "name": "Cultures",
+      "stamps": [
+        {"id": "basque_5", "name": "Learn 5 Basque words", "mvp": true},
+        {"id": "gilda", "name": "Eat a gilda", "mvp": false},
+        {"id": "camino_arrows", "name": "Follow the Camino's yellow arrows through Pamplona", "mvp": false}
+      ]
+    },
+    {
+      "id": "lifestyle",
+      "name": "Lifestyle",
+      "stamps": [
+        {"id": "dinner_2130", "name": "Survive a 21:30 dinner", "mvp": true},
+        {"id": "almuerzo", "name": "Have almuerzo", "mvp": true},
+        {"id": "no_translator", "name": "Go a whole day without the translator app", "mvp": true}
+      ]
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "stamps": [
+        {"id": "citadel_sketch", "name": "Sketch Pamplona's star-shaped citadel", "mvp": false},
+        {"id": "ecocity_tour", "name": "Tour the eco-city with Unai's dad", "mvp": false},
+        {"id": "eco_house", "name": "Build the eco-house model", "mvp": false}
+      ]
+    }
+  ]
+}

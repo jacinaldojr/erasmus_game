@@ -1,0 +1,34 @@
+{
+  "mom_texts": [
+    "Já jantaste? <3",
+    "Já jantaste? Manda foto do jantar.",
+    "Já jantaste? Aqui está a chover.",
+    "Já jantaste? Diz ao Tiago que a mãe dele mandou beijinhos.",
+    "Já jantaste? Vê se dormes.",
+    "Já jantaste? Amanhã vens! (Já jantaste?)",
+    "Chegas a que horas? Já jantaste?"
+  ],
+  "dad_texts": [
+    "Puzzle de hoje: brancas jogam, mate em 2. Dorme bem.",
+    "Puzzle: a torre está pendurada. Vês?",
+    "Puzzle: sacrifício de cavalo em f7. Classico.",
+    "Puzzle: xeque descoberto. Olha para o bispo.",
+    "Puzzle: final de peões. Conta as casas.",
+    "Puzzle: mate em 3. Este é difícil. Boa viagem amanhã.",
+    "Sem puzzle hoje. Estamos à tua espera na ponte."
+  ],
+  "diary": {
+    "0": {
+      "intro": "Sunday. Ten hours on a bus, plus one the clock stole at the border. The host families were waiting with signs. Mine said VINICIUS, no accent, which is fair.",
+      "outro": "Under the pillow: a tarot card. The Fool. A traveller with a bag stepping off a cliff, a small white dog at his heels. On the back, a riddle in Spanish. Txuri is watching me from the doorway."
+    },
+    "1": {
+      "intro": "Monday. IES Sarriguren. Nobody understands me yet, but a basketball is a basketball in any language.",
+      "outro": "Viagens na Terra dos Outros, page two. The riddle on the card mentions a star with five points and a wall. Tomorrow: Pamplona."
+    },
+    "default": {
+      "intro": "Another day in Sarriguren.",
+      "outro": "(The rest of the week is not in this build yet. Tomorrow will look a lot like today, which is also how weeks work.)"
+    }
+  }
+}

@@ -169,6 +169,6 @@ func _on_diary_confirmed() -> void:
 	if GameState.day >= GameState.LAST_DAY:
 		SaveManager.delete_save()
 		hud.visible = false
-		menu.show_end("Saturday. The bus leaves at dawn and now it is Sarriguren you miss. Unai says the Basque word for it is 'herrimina'.\n\nYou collected %d of 12 passport stamps. That is the end of the MVP." % GameState.stamps.size())
+		menu.show_end("Sábado. O autocarro parte de madrugada e agora é de Sarriguren que tens saudades. O Unai diz que em basco isso se diz 'herrimina'.\n\nJuntaste %d de 12 carimbos no passaporte. É o fim do MVP." % GameState.stamps.size())
 	else:
 		GameState.start_next_day()

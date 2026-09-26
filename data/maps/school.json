@@ -9,39 +9,66 @@
       "#...........#.............#............#",
       "#...........#.............#............#",
       "#####.#######.....#########.....########",
-      "#......................................#",
-      "#......................................#",
-      "######.###############.#################",
-      ",,,,,,=,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,=,,,,,,,,,,,,,,,,,",
-      ",,,,,,=================,,,,,,,,,,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,=======,,,,",
-      ",,,,,,=,,,,~~~~~,,,,,,,,,,,,,=======,,,,",
-      ",,,,,,=,,,,~~~~~,,,,,,,,,,,,,=======,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,=======,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,wwww,,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,wwwwww,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,wwww,,,,,,,,,",
-      ",,,,,,=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
-      "TTTTTT=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-      "TTTTTT=TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+      "#::::::::::::::::::::::::::::::::::::::#",
+      "#::::::::::::::::::::::::::::::::::::::#",
+      "######::##############::################",
+      ",,,,,,==,,,,,,,,,,,,,,==,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,==,,,,,,,,,,,,,,,,",
+      ",,,,,,==================,,,,,,,,,,,,,,,,",
+      ",,,,,,==================,,,,,=======,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,=======,,,,",
+      ",,,,,,==,,,,~~~~~,,,,,,,,,,,,=======,,,,",
+      ",,,,,,==,,,,~~~~~,,,,,,,,,,,,=======,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      ",,,,,,==,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+    ],
+    "decor": [
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "........................................",
+      "..b......S...B...........l.....s........",
+      "T.....................................T.",
+      "........................................",
+      "T.....................................T.",
+      "...........fffGfff......................",
+      ".T.........f.....f...................T..",
+      "...........f.....f......................",
+      "T..........fffffff.........*.+..'.....T.",
+      "..........................+.*.'.+.......",
+      ".T.......R.................'.*..+....T..",
+      "....................b.....*.+...........",
+      "T......o...............m..............T.",
+      "FFFFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+      "........................................"
     ],
     "spawns": {
-      "start": [6, 20],
-      "from_home": [6, 20]
+      "start": [6, 21],
+      "from_street": [6, 21]
     },
     "entities": [
-      {"type": "door", "x": 6, "y": 22, "to": "home", "spawn": "from_school", "label": "To Unai's house"},
+      {"type": "door", "x": 6, "y": 23, "to": "street", "spawn": "from_school", "label": "Para a rua"},
+      {"type": "door", "x": 7, "y": 23, "to": "street", "spawn": "from_school"},
       {
-        "type": "spot", "name": "Classroom", "color": "#6a4c93", "x": 6, "y": 3,
+        "type": "spot", "name": "Sala de aula", "color": "#6a4c93", "x": 6, "y": 3,
         "dialogues": [
           {"id": "basque_class", "if": {"day_at_least": 1, "time_between": ["08:00", "13:30"], "not_flag_today": "basque_class"}},
           {"id": "classroom_default"}
         ]
       },
       {
-        "type": "spot", "name": "Canteen", "color": "#e9c46a", "x": 17, "y": 3,
+        "type": "spot", "name": "Cantina", "color": "#e9c46a", "x": 17, "y": 3,
         "dialogues": [
           {"id": "canteen_almuerzo", "if": {"time_between": ["10:30", "11:30"], "not_flag_today": "almuerzo"}},
           {"id": "canteen_lunch", "if": {"time_between": ["14:00", "15:30"], "not_flag_today": "lunch"}},
@@ -49,21 +76,21 @@
         ]
       },
       {
-        "type": "spot", "name": "Basketball", "color": "#f4a261", "x": 32, "y": 13,
+        "type": "spot", "name": "Basquetebol", "color": "#f4a261", "x": 32, "y": 13,
         "dialogues": [
           {"id": "basketball_break", "if": {"not_flag_today": "basketball"}},
           {"id": "basketball_done"}
         ]
       },
       {
-        "type": "spot", "name": "Lago", "color": "#5ac8fa", "x": 25, "y": 19,
-        "say": "Lago de Sarriguren. A duck, two coots, and a heron pretending it is not there. You take a photo. (Photo journal: next build.)"
+        "type": "spot", "name": "Lago", "color": "#5ac8fa", "x": 30, "y": 21,
+        "say": "O Lago de Sarriguren fica ali atrás da vedação. Um pato, dois galeirões e uma garça a fingir que não está ali. Tiras uma fotografia. (Diário fotográfico: na próxima versão.)"
       },
-      {"type": "plot", "id": "garden_1", "x": 11, "y": 14},
-      {"type": "plot", "id": "garden_2", "x": 12, "y": 14},
-      {"type": "plot", "id": "garden_3", "x": 13, "y": 14},
-      {"type": "plot", "id": "garden_4", "x": 14, "y": 14},
-      {"type": "plot", "id": "garden_5", "x": 15, "y": 14},
+      {"type": "plot", "id": "garden_1", "x": 12, "y": 15},
+      {"type": "plot", "id": "garden_2", "x": 13, "y": 15},
+      {"type": "plot", "id": "garden_3", "x": 14, "y": 15},
+      {"type": "plot", "id": "garden_4", "x": 15, "y": 15},
+      {"type": "plot", "id": "garden_5", "x": 16, "y": 15},
       {
         "type": "npc", "id": "maite", "name": "Maite", "color": "#6a4c93", "x": 33, "y": 3,
         "dialogues": [
@@ -72,7 +99,7 @@
         ]
       },
       {
-        "type": "npc", "id": "iker", "name": "Iker", "color": "#2a9d8f", "x": 20, "y": 8,
+        "type": "npc", "id": "iker", "name": "Iker", "color": "#2a9d8f", "x": 20, "y": 8, "facing": [-1, 0],
         "dialogues": [
           {"id": "iker_1", "if": {"not_flag": "iker_1"}},
           {"id": "iker_2", "if": {"not_flag": "iker_2"}},
@@ -84,7 +111,7 @@
         ]
       },
       {
-        "type": "npc", "id": "goncalo", "name": "Gonçalo", "color": "#e9c46a", "x": 14, "y": 8,
+        "type": "npc", "id": "goncalo", "name": "Gonçalo", "color": "#e9c46a", "x": 14, "y": 8, "facing": [1, 0],
         "dialogues": [
           {"id": "goncalo_embarazado", "if": {"not_flag": "ff_embarazado"}},
           {"id": "goncalo_default"}
@@ -98,22 +125,22 @@
         ]
       },
       {
-        "type": "npc", "id": "rafael", "name": "Rafael", "color": "#588157", "x": 10, "y": 15,
+        "type": "npc", "id": "rafael", "name": "Rafael", "color": "#588157", "x": 10, "y": 16, "facing": [1, 0],
         "dialogues": [
           {"id": "rafael_seeds", "if": {"not_flag": "rafael_seeds"}},
           {"id": "rafael_default"}
         ]
       },
       {
-        "type": "npc", "id": "duarte", "name": "Duarte", "color": "#1d3f8a", "x": 30, "y": 17,
+        "type": "npc", "id": "duarte", "name": "Duarte", "color": "#1d3f8a", "x": 30, "y": 17, "facing": [0, -1],
         "dialogues": [{"id": "duarte_default"}]
       },
       {
-        "type": "npc", "id": "leonor", "name": "Leonor", "color": "#f4a261", "x": 34, "y": 16,
+        "type": "npc", "id": "leonor", "name": "Leonor", "color": "#f4a261", "x": 34, "y": 15, "facing": [-1, 0],
         "dialogues": [{"id": "leonor_default"}]
       },
       {
-        "type": "npc", "id": "unai_school", "name": "Unai", "color": "#d95f3b", "x": 24, "y": 11,
+        "type": "npc", "id": "unai_school", "sprite": "unai", "name": "Unai", "color": "#d95f3b", "x": 25, "y": 11, "facing": [-1, 0],
         "dialogues": [
           {"id": "unai_school_pelota", "if": {"not_flag": "pelota_deal"}},
           {"id": "unai_school_default"}

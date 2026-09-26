@@ -37,7 +37,7 @@ Three pressures shape the day, all from the story:
 | System | MVP | Later |
 |---|---|---|
 | Top-down movement, collision, doors between maps | yes | more maps (Pamplona, town hall, wind farm) |
-| Data-driven dialogue with choices, conditions, effects, translation | yes | portraits, typewriter text, localisation to PT |
+| Data-driven dialogue with choices, conditions, effects, translation | yes | portraits, typewriter text, English localisation |
 | Day clock, energy, meal windows, Mom's 20:00 text, Dad's 22:00 puzzle | yes | weather (Wednesday rain, Thursday cierzo) |
 | Passport with 12 stamps | yes (5 earnable) | all 12 |
 | Basque words, false friends (esquisito, embarazado) | yes | more scenes per word |
@@ -48,7 +48,7 @@ Three pressures shape the day, all from the story:
 | Basketball, chess, Brawl Stars minigames | dialogue stubs | real minigames |
 | Arcana Club mystery | first card only | riddles, viewpoints, the reveal |
 | *El Cierzo* boss fight | no | Thursday |
-| Art, music, sound | placeholder tiles and code-drawn figures | pixel art, nu-metal for the storm |
+| Art, music, sound | Lakiiah "Cozy RPG" exterior tiles, 32x32 animated character sheets (4 kids recoloured into the whole class, 4 adults), generated interior tiles | more tiles (water, interiors), a dog sprite, music, nu-metal for the storm |
 
 ## 4. Architecture
 
@@ -64,22 +64,41 @@ src/
   autoload/dialogue_runner.gd plays a dialogue graph, applies effects, exposes translate_current()
   autoload/save_manager.gd   one JSON slot in user://, autosaves at day end and day start
   core/conditions.gd         the {"flag": ..., "time_between": [...]} condition language
-  world/map_builder.gd       ASCII rows -> TileMapLayer; TileSet built at runtime from one PNG
-  world/world.gd             loads a map, spawns entities, moves the player and camera
+  world/map_builder.gd       ASCII rows -> ground + decor TileMapLayers; one TileSet from three atlases,
+                             autotiles paths, tilled soil and fences from their neighbours
+  world/world.gd             loads a map, spawns props and entities, moves the player and camera
   player/player.gd           movement + facing probe that calls interact() on what is in front
+  entities/character_sprite.gd  animated 8-direction sheet with per-character recolouring
+  entities/prop.gd           y-sorted scenery sprite with collider (tree, house, bush, rock, signpost)
   entities/                  npc, spot (examinable place), door, garden_plot, bed
   ui/                        hud, dialogue_box, passport_panel, phone_panel, diary_panel, menu_panel, game_ui
 data/
-  maps/*.json              rows (ASCII), spawns, entities with dialogue routing
+  maps/*.json              rows + decor (ASCII), spawns, props, entities with dialogue routing
   dialogues/*.json         dialogue graphs
+  cast.json                character id -> sprite sheet + recolour map
   passport.json            4 goals x 3 stamps, "mvp" flag marks what this build can award
   words.json               Basque word list
   texts.json               Mom/Dad texts per day, diary intro/outro per day
+assets/
+  Cozy RPG Tileset - Lakiiah/  exterior tiles (grass, path, soil, cliff, fences, houses, trees)
+  characters/              32x32 idle-run sheets, 4 kids + 4 adults
+  tiles/tileset.png        generated interior floors and walls
 tools/
   make_tileset.py          regenerates assets/tiles/tileset.png (stdlib only)
-  smoke_test.gd            headless content lint + gameplay run (377 checks)
-  screenshots.gd           windowed run that saves PNGs of menu, home, dialogue, passport, school, diary
+  smoke_test.gd            headless content lint + gameplay run (430 checks)
+  screenshots.gd           windowed run that saves PNGs of menu, home, dialogue, passport, street, school, diary
 ```
+
+### Maps and art
+
+Three maps: Unai's house (interior), the street in Sarriguren (exterior: Unai's red house, a neighbour's, fenced gardens, the path to school) and IES Sarriguren (interior top, yard below with the eco-garden and the court). A map JSON has `rows` (ground) and an optional `decor` layer of the same size; both are ASCII, so adding a fence is typing `f`.
+
+- Ground: `,` grass (random variants), `=` path and `~` tilled soil (3x3 autotile from neighbours), `C`/`D` cliff and dirt, `.` wood floor, `:` tiled floor, `#` wall, `c` carpet, `_` mat.
+- Decor: `T` tree (a y-sorted prop you can walk behind), `f`/`F`/`G` wooden, stone and light-stone fences (autotiled), `b B s` bushes, `r R o` rocks, `* + '` flowers, `m` mushroom, `S` signpost, `l` barrel.
+- Props: `{"type": "prop", "sprite": "house_red", "x": 7.5, "y": 6}`; the sprite's bottom edge sits on the anchor cell, fractional cells allowed.
+- Characters: `data/cast.json` maps an id to a sheet and an exact-colour recolour map. Four kid sheets play the whole class (Unai's blazer is Osasuna red, Iker's jumper teal, Gonçalo's yellow); the four adult sheets are Arantxa, Iñaki, Maite and Aitona Joxemari. Txuri the dog is still drawn in code: the packs have no dog.
+
+Credits: exterior tiles by Lakiiah (`assets/Cozy RPG Tileset - Lakiiah/TopDown 16x16/README.txt`, https://lakiah.itch.io/). The character sheets in `assets/characters/` carry no licence file; confirm their terms before distributing the game beyond family and school.
 
 ### Flow of one interaction
 
@@ -144,7 +163,7 @@ Maps are ASCII: `#` wall, `.` floor, `,` grass, `=` path, `~` soil, `w` water, `
 3. **Art pass.** Replace the runtime tileset and code-drawn figures with 16x16 pixel art. The `MapBuilder` legend and the entity `color` fields are the only places to touch.
 4. **Prologue and character creation** from the "Getting to know each other" form, so any of the 15 students can play their own version.
 5. **Wednesday to Saturday**, then the *El Cierzo* fight as the one combat set piece.
-6. **Portuguese localisation.** Narration and UI are English in the MVP; NPCs already speak Spanish, Basque and Portuguese. Move UI strings to Godot's translation CSV.
+6. **English localisation.** Narration and UI are in European Portuguese (the translator app shows Portuguese too); NPCs speak Spanish, Basque and Portuguese. To add English, move UI strings to Godot's translation CSV.
 
 ## 8. Open questions (unchanged from STORY.md)
 

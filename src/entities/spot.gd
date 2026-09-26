@@ -33,7 +33,11 @@ func interact(_player: Node) -> void:
 
 
 func _draw() -> void:
-	draw_rect(Rect2(-7, -7, 14, 14), color.darkened(0.3))
-	draw_rect(Rect2(-5, -5, 10, 10), color)
-	draw_rect(Rect2(-1, -3, 2, 4), Color.BLACK)
-	draw_rect(Rect2(-1, 2, 2, 1), Color.BLACK)
+	# A small "!" bubble in the Lakiiah palette: dark outline, tinted fill, little tail.
+	var outline := Color.html("#3a2a2a")
+	draw_circle(Vector2(0, 6), 4.0, Color(0, 0, 0, 0.2))
+	draw_circle(Vector2(0, -2), 6.0, outline)
+	draw_circle(Vector2(0, -2), 5.0, color.lightened(0.15))
+	draw_rect(Rect2(-2, 3, 4, 3), outline)
+	draw_rect(Rect2(-1, -5, 2, 4), outline)
+	draw_rect(Rect2(-1, 0, 2, 1), outline)

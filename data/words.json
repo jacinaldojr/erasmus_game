@@ -1,12 +1,12 @@
 {
-  "kaixo": {"basque": "kaixo", "meaning": "hello"},
-  "egun_on": {"basque": "egun on", "meaning": "good morning"},
-  "eskerrik_asko": {"basque": "eskerrik asko", "meaning": "thank you"},
-  "agur": {"basque": "agur", "meaning": "goodbye"},
-  "bai": {"basque": "bai", "meaning": "yes"},
-  "ez": {"basque": "ez", "meaning": "no"},
-  "txuri": {"basque": "txuri", "meaning": "white"},
-  "aitona": {"basque": "aitona", "meaning": "grandfather"},
-  "amona": {"basque": "amona", "meaning": "grandmother"},
-  "herrimina": {"basque": "herrimina", "meaning": "homesickness"}
+  "kaixo": {"basque": "kaixo", "meaning": "olá"},
+  "egun_on": {"basque": "egun on", "meaning": "bom dia"},
+  "eskerrik_asko": {"basque": "eskerrik asko", "meaning": "obrigado"},
+  "agur": {"basque": "agur", "meaning": "adeus"},
+  "bai": {"basque": "bai", "meaning": "sim"},
+  "ez": {"basque": "ez", "meaning": "não"},
+  "txuri": {"basque": "txuri", "meaning": "branco"},
+  "aitona": {"basque": "aitona", "meaning": "avô"},
+  "amona": {"basque": "amona", "meaning": "avó"},
+  "herrimina": {"basque": "herrimina", "meaning": "saudade de casa"}
 }

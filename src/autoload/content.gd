@@ -6,12 +6,14 @@ var words: Dictionary = {}
 var texts: Dictionary = {}
 var dialogues: Dictionary = {}
 var maps: Dictionary = {}
+var cast: Dictionary = {}
 
 
 func _ready() -> void:
 	passport = _load_json("res://data/passport.json")
 	words = _load_json("res://data/words.json")
 	texts = _load_json("res://data/texts.json")
+	cast = _load_json("res://data/cast.json")
 	_load_dir("res://data/dialogues", dialogues)
 	_load_dir("res://data/maps", maps)
 
@@ -45,6 +47,12 @@ func get_dialogue(id: String) -> Dictionary:
 
 func get_map(id: String) -> Dictionary:
 	return maps.get(id, {})
+
+
+func cast_entry(id: String) -> Dictionary:
+	## Sprite sheet + recolour map for a character id (see data/cast.json). {} if unknown.
+	var entry = cast.get(id, {})
+	return entry if entry is Dictionary else {}
 
 
 func all_stamps() -> Array:
@@ -103,10 +111,10 @@ func diary_for_day(day: int, log: Array, reason: String) -> String:
 	if reason != "":
 		out += reason + "\n\n"
 	if log.is_empty():
-		out += "Nothing much happened. That is also a kind of day.\n"
+		out += "Não aconteceu grande coisa. Também é uma espécie de dia.\n"
 	else:
 		for line in log:
 			out += "• " + str(line) + "\n"
 	out += "\n" + entry.get("outro", "")
-	out += "\n\nBasque words so far: %d.  Passport stamps: %d / 12." % [GameState.words.size(), GameState.stamps.size()]
+	out += "\n\nPalavras em basco até agora: %d.  Carimbos no passaporte: %d / 12." % [GameState.words.size(), GameState.stamps.size()]
 	return out.strip_edges()

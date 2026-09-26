@@ -19,7 +19,7 @@ func save_game() -> void:
 		return
 	f.store_string(JSON.stringify(GameState.to_dict(), "\t"))
 	f.close()
-	Events.notify.emit("Game saved.")
+	Events.notify.emit("Jogo guardado.")
 
 
 func load_game() -> bool:

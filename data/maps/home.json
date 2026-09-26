@@ -1,30 +1,28 @@
 {
   "home": {
-    "name": "Unai's house, Sarriguren",
+    "name": "Casa do Unai, Sarriguren",
     "rows": [
       "########################",
       "#..........#...........#",
       "#..........#...........#",
       "#..........#...........#",
       "#......................#",
-      "#####.######...........#",
-      "#......................#",
-      "#......................#",
-      "#.......cc.............#",
-      "#.......cc.............#",
-      "########.###############",
-      ",,,,,,,,=,,,,,,,,,,,,,,,",
-      ",,,,,,,,=,,,,,,,,,,,,,,,",
-      "TTTTTTTT=TTTTTTTTTTTTTTT"
+      "#####.######:::::::::::#",
+      "#...........:::::::::::#",
+      "#...........:::::::::::#",
+      "#.......cc..:::::::::::#",
+      "#.......cc..:::::::::::#",
+      "#........_.............#",
+      "########################"
     ],
     "spawns": {
       "start": [6, 7],
       "bed": [4, 3],
-      "from_school": [8, 11]
+      "from_street": [9, 9]
     },
     "entities": [
       {"type": "bed", "x": 2, "y": 2},
-      {"type": "door", "x": 8, "y": 13, "to": "school", "spawn": "from_home", "label": "To IES Sarriguren"},
+      {"type": "door", "x": 9, "y": 10, "to": "street", "spawn": "from_home", "label": "Para a rua"},
       {
         "type": "npc", "id": "arantxa", "name": "Arantxa", "color": "#c8433f", "x": 18, "y": 8,
         "dialogues": [
@@ -38,7 +36,7 @@
         ]
       },
       {
-        "type": "npc", "id": "unai", "name": "Unai", "color": "#d95f3b", "x": 16, "y": 2,
+        "type": "npc", "id": "unai", "name": "Unai", "color": "#d95f3b", "x": 16, "y": 2, "facing": [-1, 1],
         "dialogues": [
           {"id": "unai_sunday", "if": {"not_flag": "met_unai"}},
           {"id": "unai_card", "if": {"flag": "fool_card", "not_flag": "asked_unai_card"}},
@@ -46,18 +44,18 @@
         ]
       },
       {
-        "type": "npc", "id": "nahia", "name": "Nahia", "color": "#e08fc0", "x": 20, "y": 3,
+        "type": "npc", "id": "nahia", "name": "Nahia", "color": "#e08fc0", "x": 20, "y": 3, "facing": [-1, 0],
         "dialogues": [{"id": "nahia_default"}]
       },
       {
-        "type": "npc", "id": "inaki", "name": "Iñaki", "color": "#4a6fa5", "x": 14, "y": 7,
+        "type": "npc", "id": "inaki", "name": "Iñaki", "color": "#4a6fa5", "x": 14, "y": 7, "facing": [1, 0],
         "dialogues": [
           {"id": "inaki_linkin_park", "if": {"not_flag": "inaki_lp"}},
           {"id": "inaki_default"}
         ]
       },
       {
-        "type": "npc", "id": "aitona", "name": "Aitona Joxemari", "color": "#8c8c8c", "x": 4, "y": 8,
+        "type": "npc", "id": "aitona", "name": "Aitona Joxemari", "color": "#8c8c8c", "x": 4, "y": 8, "facing": [1, 0],
         "dialogues": [
           {"id": "aitona_challenge", "if": {"not_flag": "chess_promised"}},
           {"id": "aitona_wait"}

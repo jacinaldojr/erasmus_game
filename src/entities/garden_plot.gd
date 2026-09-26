@@ -23,24 +23,24 @@ func interact(_player: Node) -> void:
 	match GameState.plot_stage(plot_id):
 		0:
 			if GameState.item_count(SEED_ITEM) <= 0:
-				DialogueRunner.start_line("", "Bare soil. You need seeds. Rafael is by the garden with a pocketful.")
+				DialogueRunner.start_line("", "Terra nua. Precisas de sementes. O Rafael está ao pé da horta com o bolso cheio delas.")
 				return
 			GameState.remove_item(SEED_ITEM, 1)
 			GameState.plant(plot_id, CROP)
 			GameState.advance_time(10)
 			if not GameState.has_flag("planted_first"):
 				GameState.set_flag("planted_first")
-				GameState.log_event("Planted cress in the IES Sarriguren eco-garden.")
-			DialogueRunner.start_line("", "You plant the cress. Rafael says it sprouts tomorrow and is ready the day after. (Seeds left: %d)" % GameState.item_count(SEED_ITEM))
+				GameState.log_event("Plantei agrião na horta ecológica do IES Sarriguren.")
+			DialogueRunner.start_line("", "Plantas o agrião. O Rafael diz que rebenta amanhã e fica pronto no dia seguinte. (Sementes restantes: %d)" % GameState.item_count(SEED_ITEM))
 		1:
-			DialogueRunner.start_line("", "Freshly planted. Nothing to see yet. Rafael says that is normal, and that you should stop staring at it.")
+			DialogueRunner.start_line("", "Acabado de plantar. Ainda não há nada para ver. O Rafael diz que é normal, e que devias parar de olhar para ele.")
 		2:
-			DialogueRunner.start_line("", "Tiny green sprouts! Tomorrow they will be ready.")
+			DialogueRunner.start_line("", "Rebentos verdes pequeninos! Amanhã estão prontos.")
 		3:
 			GameState.harvest(plot_id)
 			GameState.add_item(CROP, 1)
-			GameState.log_event("Harvested cress from the eco-garden.")
-			DialogueRunner.start_line("", "You harvest a handful of cress. Arantxa will put it on the tortilla. (Cress: %d)" % GameState.item_count(CROP))
+			GameState.log_event("Colhi agrião na horta ecológica.")
+			DialogueRunner.start_line("", "Colhes uma mão-cheia de agrião. A Arantxa vai pô-lo na tortilha. (Agrião: %d)" % GameState.item_count(CROP))
 
 
 func _draw() -> void:

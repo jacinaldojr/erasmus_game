@@ -30,7 +30,10 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _draw() -> void:
-	draw_rect(Rect2(-8, -8, 16, 16), Color(1, 1, 1, 0.15))
-	draw_rect(Rect2(-6, -6, 12, 12), Color.html("#ffd617"), false, 1.0)
+	# Soft highlight only; the tiles underneath (door mat, path end, house door) do the talking.
+	draw_rect(Rect2(-7, -7, 14, 14), Color(1, 1, 0.6, 0.12))
 	if label != "":
-		draw_string(ThemeDB.fallback_font, Vector2(-30, -10), label, HORIZONTAL_ALIGNMENT_CENTER, 60, 6, Color.WHITE)
+		var font := ThemeDB.fallback_font
+		var pos := Vector2(-50, -12)
+		draw_string_outline(font, pos, label, HORIZONTAL_ALIGNMENT_CENTER, 100, 6, 2, Color(0, 0, 0, 0.85))
+		draw_string(font, pos, label, HORIZONTAL_ALIGNMENT_CENTER, 100, 6, Color.WHITE)

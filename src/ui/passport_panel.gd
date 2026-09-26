@@ -50,4 +50,4 @@ func _refresh() -> void:
 			l.custom_minimum_size = Vector2(170, 0)
 			v.add_child(l)
 		grid.add_child(v)
-	body.add_child(UiStyle.label("[-] not in this build.   Tab / Esc: close", 7, UiStyle.MUTED))
+	body.add_child(UiStyle.label("[-] ainda não está nesta versão.   Tab / Esc: fechar", 7, UiStyle.MUTED))

@@ -31,7 +31,7 @@ func _ready() -> void:
 	v.add_child(choices_box)
 	var bottom := HBoxContainer.new()
 	v.add_child(bottom)
-	hint_label = UiStyle.label("E / Enter: continue", 7, UiStyle.MUTED)
+	hint_label = UiStyle.label("E / Enter: continuar", 7, UiStyle.MUTED)
 	hint_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bottom.add_child(hint_label)
 	translate_button = UiStyle.button("", 8)
@@ -60,9 +60,9 @@ func _on_line(speaker: String, text: String, choices: Array, translation: String
 	if _choice_count > 0:
 		(choices_box.get_child(0) as Button).grab_focus()
 	translate_button.visible = translation != ""
-	translate_button.text = "[T] Phone translate  (-%d%% battery)" % GameState.TRANSLATOR_BATTERY_COST
+	translate_button.text = "[T] Traduzir no telemóvel  (-%d%% bateria)" % GameState.TRANSLATOR_BATTERY_COST
 	translate_button.disabled = not GameState.can_use_translator()
-	hint_label.text = "E / Enter: continue" if _choice_count == 0 else "1-%d or click to choose" % _choice_count
+	hint_label.text = "E / Enter: continuar" if _choice_count == 0 else "1-%d ou clica para escolher" % _choice_count
 
 
 func on_interact() -> void:
@@ -79,7 +79,7 @@ func translate() -> void:
 		return
 	var tr := DialogueRunner.translate_current()
 	if tr != "":
-		text_label.text += "\n[color=#9ad0ff][i]Phone: %s[/i][/color]" % tr
+		text_label.text += "\n[color=#9ad0ff][i]Telemóvel: %s[/i][/color]" % tr
 		translate_button.visible = false
 
 

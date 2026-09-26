@@ -2,145 +2,145 @@
   "maite_welcome": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Maite", "text": "¡Bienvenidos a IES Sarriguren! Soy Maite. Aquí damos clase en castellano y en euskera. Y una cosa: el portugués y el castellano se parecen, pero cuidado con los falsos amigos.", "translation": "Welcome to IES Sarriguren! I'm Maite. We teach in Spanish and Basque here. And one thing: Portuguese and Spanish look alike, but beware of false friends.", "branch": [
+      "n1": {"speaker": "Maite", "text": "¡Bienvenidos a IES Sarriguren! Soy Maite. Aquí damos clase en castellano y en euskera. Y una cosa: el portugués y el castellano se parecen, pero cuidado con los falsos amigos.", "translation": "Bem-vindos ao IES Sarriguren! Sou a Maite. Aqui damos aulas em castelhano e em basco. E uma coisa: o português e o castelhano são parecidos, mas cuidado com os falsos amigos.", "branch": [
         {"if": {"flag": "ff_esquisito"}, "next": "late"},
         {"next": "example"}
       ]},
-      "late": {"text": "Too late. You told Arantxa her stew was 'esquisito' last night. Best mistake you have made so far.", "next": "end"},
-      "example": {"speaker": "Maite", "text": "Por ejemplo: 'exquisito' no es raro. Es delicioso. Ya me lo agradecerás.", "translation": "For example: 'exquisito' isn't weird. It's delicious. You'll thank me later.", "next": "end"},
-      "end": {"effects": [{"flag": "maite_welcome"}, {"friendship": {"who": "maite", "value": 1}}, {"time": 10}, {"log": "Welcomed at IES Sarriguren by Maite, the Spanish teacher."}]}
+      "late": {"text": "Tarde demais. Ontem à noite disseste à Arantxa que o guisado dela estava 'esquisito'. O melhor erro que cometeste até agora.", "next": "end"},
+      "example": {"speaker": "Maite", "text": "Por ejemplo: 'exquisito' no es raro. Es delicioso. Ya me lo agradecerás.", "translation": "Por exemplo: 'exquisito' não é estranho. É delicioso. Depois agradeces-me.", "next": "end"},
+      "end": {"effects": [{"flag": "maite_welcome"}, {"friendship": {"who": "maite", "value": 1}}, {"time": 10}, {"log": "Fui recebido no IES Sarriguren pela Maite, a professora de espanhol."}]}
     }
   },
   "maite_default": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Maite", "text": "La clase de euskera está a la izquierda. No entenderás nada. Es normal.", "translation": "Basque class is on the left. You won't understand a thing. That's normal."}
+      "n1": {"speaker": "Maite", "text": "La clase de euskera está a la izquierda. No entenderás nada. Es normal.", "translation": "A aula de basco é à esquerda. Não vais perceber nada. É normal."}
     }
   },
   "iker_1": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "¡Eh, el portugués! Soy Iker. Clase de euskera gratis. Lección uno: 'egun on' = buenos días.", "translation": "Hey, the Portuguese guy! I'm Iker. Free Basque class. Lesson one: 'egun on' = good morning.", "choices": [
+      "n1": {"speaker": "Iker", "text": "¡Eh, el portugués! Soy Iker. Clase de euskera gratis. Lección uno: 'egun on' = buenos días.", "translation": "Eh, o português! Sou o Iker. Aula de basco grátis. Lição um: 'egun on' = bom dia.", "choices": [
         {"text": "\"Egun on!\"", "next": "end"}
       ]},
-      "end": {"speaker": "Iker", "text": "¡Eso es! Vuelve para la lección dos.", "translation": "That's it! Come back for lesson two.", "effects": [{"word": "egun_on"}, {"flag": "iker_1"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
+      "end": {"speaker": "Iker", "text": "¡Eso es! Vuelve para la lección dos.", "translation": "É isso! Volta para a lição dois.", "effects": [{"word": "egun_on"}, {"flag": "iker_1"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
     }
   },
   "iker_2": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "Lección dos: 'eskerrik asko' = gracias. Dilo rápido cinco veces.", "translation": "Lesson two: 'eskerrik asko' = thank you. Say it fast five times.", "choices": [
+      "n1": {"speaker": "Iker", "text": "Lección dos: 'eskerrik asko' = gracias. Dilo rápido cinco veces.", "translation": "Lição dois: 'eskerrik asko' = obrigado. Diz depressa cinco vezes.", "choices": [
         {"text": "\"Eskerrik asko!\"", "next": "end"}
       ]},
-      "end": {"speaker": "Iker", "text": "Casi. Eskerrik asko. Con la erre. Bueno, vale.", "translation": "Almost. Eskerrik asko. With the R. Fine, okay.", "effects": [{"word": "eskerrik_asko"}, {"flag": "iker_2"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
+      "end": {"speaker": "Iker", "text": "Casi. Eskerrik asko. Con la erre. Bueno, vale.", "translation": "Quase. Eskerrik asko. Com o erre. Pronto, está bem.", "effects": [{"word": "eskerrik_asko"}, {"flag": "iker_2"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
     }
   },
   "iker_3": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "Lección tres: 'agur' = adiós. Lo necesitarás el sábado. No pienses en eso.", "translation": "Lesson three: 'agur' = goodbye. You'll need it on Saturday. Don't think about that.", "choices": [
-        {"text": "\"Agur... no. Not yet.\"", "next": "end"}
+      "n1": {"speaker": "Iker", "text": "Lección tres: 'agur' = adiós. Lo necesitarás el sábado. No pienses en eso.", "translation": "Lição três: 'agur' = adeus. Vais precisar dela no sábado. Não penses nisso.", "choices": [
+        {"text": "\"Agur... não. Ainda não.\"", "next": "end"}
       ]},
-      "end": {"speaker": "Iker", "text": "Jajaja. Bien dicho.", "translation": "Hahaha. Well said.", "effects": [{"word": "agur"}, {"flag": "iker_3"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
+      "end": {"speaker": "Iker", "text": "Jajaja. Bien dicho.", "translation": "Hahaha. Bem dito.", "effects": [{"word": "agur"}, {"flag": "iker_3"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
     }
   },
   "iker_joke": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "A ver, di algo en euskera. Lo que sea.", "translation": "Go on, say something in Basque. Anything.", "choices": [
-        {"text": "\"Egun on, eskerrik asko, agur!\" (all of it, very fast)", "if": {"has_words": ["egun_on", "eskerrik_asko", "agur"]}, "next": "laugh"},
+      "n1": {"speaker": "Iker", "text": "A ver, di algo en euskera. Lo que sea.", "translation": "Vá, diz alguma coisa em basco. Qualquer coisa.", "choices": [
+        {"text": "\"Egun on, eskerrik asko, agur!\" (tudo, muito depressa)", "if": {"has_words": ["egun_on", "eskerrik_asko", "agur"]}, "next": "laugh"},
         {"text": "\"Kaixo.\"", "next": "meh"}
       ]},
-      "laugh": {"speaker": "Iker", "text": "¡JAJAJA! 'Buenos días, gracias, adiós' en dos segundos. Eres una conversación entera.", "translation": "HAHAHA! 'Good morning, thank you, goodbye' in two seconds. You are an entire conversation.", "effects": [{"stamp": "make_laugh"}, {"friendship": {"who": "iker", "value": 2}}, {"log": "Made Iker laugh on purpose with three Basque words in a row."}]},
-      "meh": {"speaker": "Iker", "text": "Sí, ya. Otro día.", "translation": "Yeah, sure. Another day."}
+      "laugh": {"speaker": "Iker", "text": "¡JAJAJA! 'Buenos días, gracias, adiós' en dos segundos. Eres una conversación entera.", "translation": "HAHAHA! 'Bom dia, obrigado, adeus' em dois segundos. És uma conversa inteira.", "effects": [{"stamp": "make_laugh"}, {"friendship": {"who": "iker", "value": 2}}, {"log": "Fiz o Iker rir de propósito com três palavras em basco seguidas."}]},
+      "meh": {"speaker": "Iker", "text": "Sí, ya. Otro día.", "translation": "Sim, pois. Fica para outro dia."}
     }
   },
   "iker_4": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "Lección cuatro: 'bai' = sí. Fácil.", "translation": "Lesson four: 'bai' = yes. Easy.", "choices": [
+      "n1": {"speaker": "Iker", "text": "Lección cuatro: 'bai' = sí. Fácil.", "translation": "Lição quatro: 'bai' = sim. Fácil.", "choices": [
         {"text": "\"Bai.\"", "next": "end"}
       ]},
-      "end": {"speaker": "Iker", "text": "Bai. Perfecto.", "translation": "Yes. Perfect.", "effects": [{"word": "bai"}, {"flag": "iker_4"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
+      "end": {"speaker": "Iker", "text": "Bai. Perfecto.", "translation": "Sim. Perfeito.", "effects": [{"word": "bai"}, {"flag": "iker_4"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
     }
   },
   "iker_5": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "Lección cinco: 'ez' = no. Úsalo con los guisantes.", "translation": "Lesson five: 'ez' = no. Use it on the peas.", "choices": [
+      "n1": {"speaker": "Iker", "text": "Lección cinco: 'ez' = no. Úsalo con los guisantes.", "translation": "Lição cinco: 'ez' = não. Usa-a com as ervilhas.", "choices": [
         {"text": "\"Ez!\"", "next": "end"}
       ]},
-      "end": {"speaker": "Iker", "text": "¡Ez! Ya eres medio navarro.", "translation": "No! You're half Navarrese now.", "effects": [{"word": "ez"}, {"flag": "iker_5"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
+      "end": {"speaker": "Iker", "text": "¡Ez! Ya eres medio navarro.", "translation": "Não! Já és meio navarro.", "effects": [{"word": "ez"}, {"flag": "iker_5"}, {"friendship": {"who": "iker", "value": 1}}, {"time": 10}]}
     }
   },
   "iker_default": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Iker", "text": "Ya sabes más euskera que mi primo de Madrid.", "translation": "You already know more Basque than my cousin from Madrid."}
+      "n1": {"speaker": "Iker", "text": "Ya sabes más euskera que mi primo de Madrid.", "translation": "Já sabes mais basco do que o meu primo de Madrid."}
     }
   },
   "canteen_almuerzo": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "Almuerzo: the mid-morning snack, a whole meal Portugal forgot to invent. On the counter: bocadillos de tortilla. And a tray of chickpeas.", "choices": [
-        {"text": "Bocadillo de tortilla.", "next": "eat"},
-        {"text": "Look at the chickpeas.", "next": "chickpeas"}
+      "n1": {"text": "Almuerzo: o lanche do meio da manhã, uma refeição inteira que Portugal se esqueceu de inventar. No balcão: bocadillos de tortilha. E um tabuleiro de grão-de-bico.", "choices": [
+        {"text": "Bocadillo de tortilha.", "next": "eat"},
+        {"text": "Olhar para o grão-de-bico.", "next": "chickpeas"}
       ]},
-      "chickpeas": {"text": "You look at the chickpeas. The chickpeas look at you. Bocadillo it is.", "next": "eat"},
-      "eat": {"text": "Warm bread, cold tortilla. Perfect.", "effects": [{"energy": 25}, {"stamp": "almuerzo"}, {"flag_today": "almuerzo"}, {"time": 15}, {"log": "Had almuerzo at eleven: bocadillo de tortilla."}]}
+      "chickpeas": {"text": "Olhas para o grão-de-bico. O grão-de-bico olha para ti. Vai ser bocadillo.", "next": "eat"},
+      "eat": {"text": "Pão quente, tortilha fria. Perfeito.", "effects": [{"energy": 25}, {"stamp": "almuerzo"}, {"flag_today": "almuerzo"}, {"time": 15}, {"log": "Comi o almuerzo às onze: bocadillo de tortilha."}]}
     }
   },
   "canteen_lunch": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "Lunch at 14:00. Today: lentejas con chorizo, or garbanzos. Ana the vegetarian is negotiating with the cook.", "choices": [
+      "n1": {"text": "Almoço às 14:00. Hoje: lentejas con chorizo, ou garbanzos. A Ana, que é vegetariana, está a negociar com a cozinheira.", "choices": [
         {"text": "Lentejas.", "next": "eat"},
-        {"text": "Garbanzos... no. Lentejas.", "next": "eat"}
+        {"text": "Garbanzos... não. Lentejas.", "next": "eat"}
       ]},
-      "eat": {"text": "Lentils. Ana got a salad after a short treaty.", "effects": [{"energy": 30}, {"flag_today": "lunch"}, {"time": 30}, {"log": "Lunch at 14:00: lentils. Ana negotiated a salad."}]}
+      "eat": {"text": "Lentilhas. A Ana conseguiu uma salada depois de um curto tratado de paz.", "effects": [{"energy": 30}, {"flag_today": "lunch"}, {"time": 30}, {"log": "Almoço às 14:00: lentilhas. A Ana negociou uma salada."}]}
     }
   },
   "canteen_closed": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "Closed. Almuerzo 10:30 to 11:30. Lunch 14:00 to 15:30. Your stomach is still on Portuguese time."}
+      "n1": {"text": "Fechado. Almuerzo das 10:30 às 11:30. Almoço das 14:00 às 15:30. O teu estômago ainda está na hora portuguesa."}
     }
   },
   "basque_class": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Teacher", "text": "Egun on denoi. Gaur energia berriztagarriei buruz hitz egingo dugu. Nafarroan haizea garrantzitsua da...", "translation": "Good morning everyone. Today we'll talk about renewable energy. In Navarre, wind is important... Vinícius and the Portuguese group will help with the eco-house model on Friday.", "next": "n2"},
-      "n2": {"text": "Forty minutes. You understood: 'Vinícius', 'Portugal', and one 'kaixo'. Inês, who dreaded reading Spanish, is taking notes. In Basque.", "effects": [{"time": 45}, {"energy": -5}, {"flag_today": "basque_class"}, {"log": "Sat through a class in Basque. Understood three words."}]}
+      "n1": {"speaker": "Professora", "text": "Egun on denoi. Gaur energia berriztagarriei buruz hitz egingo dugu. Nafarroan haizea garrantzitsua da...", "translation": "Bom dia a todos. Hoje vamos falar de energias renováveis. Em Navarra, o vento é importante... O Vinícius e o grupo português vão ajudar com a maqueta da casa ecológica na sexta-feira.", "next": "n2"},
+      "n2": {"text": "Quarenta minutos. Percebeste: 'Vinícius', 'Portugal' e um 'kaixo'. A Inês, que tinha pavor de ler em espanhol, está a tirar apontamentos. Em basco.", "effects": [{"time": 45}, {"energy": -5}, {"flag_today": "basque_class"}, {"log": "Assisti a uma aula em basco. Percebi três palavras."}]}
     }
   },
   "classroom_default": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "Empty desks. Someone drew the Osasuna crest on one, then an FC Porto crest next to it. Martim has been here."}
+      "n1": {"text": "Carteiras vazias. Alguém desenhou o emblema do Osasuna numa delas e, ao lado, um emblema do FC Porto. O Martim esteve aqui."}
     }
   },
   "basketball_break": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "Duarte is already shooting. Leonor sinks a three from the corner without looking. Two kids from IES Sarriguren are watching.", "choices": [
-        {"text": "Play. (30 min, -15 energy)", "if": {"energy_at_least": 15}, "next": "play"},
-        {"text": "Not now.", "next": "no"}
+      "n1": {"text": "O Duarte já está a lançar. A Leonor mete um triplo do canto sem olhar. Dois miúdos do IES Sarriguren estão a ver.", "choices": [
+        {"text": "Jogar. (30 min, -15 energia)", "if": {"energy_at_least": 15}, "next": "play"},
+        {"text": "Agora não.", "next": "no"}
       ]},
-      "play": {"text": "Nobody needs Spanish for a pick-and-roll. The two Spanish kids join in. Leonor wins at threes. Again.", "effects": [{"time": 30}, {"energy": -15}, {"friendship": {"who": "duarte", "value": 1}}, {"friendship": {"who": "leonor", "value": 1}}, {"flag_today": "basketball"}, {"log": "Played basketball at break with Duarte, Leonor and two kids from IES Sarriguren."}]},
-      "no": {"text": "Leonor shrugs and sinks another one."}
+      "play": {"text": "Ninguém precisa de espanhol para um pick-and-roll. Os dois miúdos espanhóis juntam-se ao jogo. A Leonor ganha nos triplos. Outra vez.", "effects": [{"time": 30}, {"energy": -15}, {"friendship": {"who": "duarte", "value": 1}}, {"friendship": {"who": "leonor", "value": 1}}, {"flag_today": "basketball"}, {"log": "Joguei basquetebol no intervalo com o Duarte, a Leonor e dois miúdos do IES Sarriguren."}]},
+      "no": {"text": "A Leonor encolhe os ombros e mete mais um."}
     }
   },
   "basketball_done": {
     "start": "n1",
     "nodes": {
-      "n1": {"text": "You already played today. Your legs would like to lodge a complaint."}
+      "n1": {"text": "Já jogaste hoje. As tuas pernas gostariam de apresentar uma reclamação."}
     }
   },
   "rafael_seeds": {
     "start": "n1",
     "nodes": {
       "n1": {"speaker": "Rafael", "text": "Olha só. Horta escolar. Mostram-me terra e eu já estou em casa.", "next": "n2"},
-      "n2": {"speaker": "Rafael", "text": "Toma, agrião. Cresce em dois dias. Planta ali, naqueles canteiros. Eu trato da rega.", "effects": [{"item": "seeds", "count": 3}, {"flag": "rafael_seeds"}, {"friendship": {"who": "rafael", "value": 1}}, {"log": "Rafael gave you three packets of cress seeds for the eco-garden."}]}
+      "n2": {"speaker": "Rafael", "text": "Toma, agrião. Cresce em dois dias. Planta ali, naqueles canteiros. Eu trato da rega.", "effects": [{"item": "seeds", "count": 3}, {"flag": "rafael_seeds"}, {"friendship": {"who": "rafael", "value": 1}}, {"log": "O Rafael deu-me três pacotes de sementes de agrião para a horta ecológica."}]}
     }
   },
   "rafael_default": {
@@ -152,19 +152,19 @@
   "goncalo_embarazado": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Gonçalo", "text": "Estoy muy embarazado por este viaje, ¿sabes?", "translation": "I'm very pregnant about this trip, you know?", "next": "n2"},
-      "n2": {"text": "Every Spanish student within ten metres turns around. Gonçalo has just announced that he is very pregnant.", "choices": [
-        {"text": "Tell him. Gently.", "next": "tell"},
-        {"text": "Say nothing. This is too good.", "next": "keep"}
+      "n1": {"speaker": "Gonçalo", "text": "Estoy muy embarazado por este viaje, ¿sabes?", "translation": "Estou muito grávido por causa desta viagem, sabes?", "next": "n2"},
+      "n2": {"text": "Todos os alunos espanhóis num raio de dez metros se viram. O Gonçalo acabou de anunciar que está muito grávido.", "choices": [
+        {"text": "Dizer-lhe. Com jeitinho.", "next": "tell"},
+        {"text": "Não dizer nada. Isto é bom demais.", "next": "keep"}
       ]},
-      "tell": {"speaker": "Gonçalo", "text": "...Embarazada é grávida?! Eu disse isso ao professor Rui!", "effects": [{"flag": "ff_embarazado"}, {"friendship": {"who": "goncalo", "value": 1}}, {"log": "Explained to Gonçalo that 'embarazado' means pregnant. He had said it to Professor Rui."}]},
-      "keep": {"text": "You will tell him on Friday. Maybe.", "effects": [{"flag": "ff_embarazado"}, {"log": "Let Gonçalo keep announcing he is pregnant. For science."}]}
+      "tell": {"speaker": "Gonçalo", "text": "...Embarazada é grávida?! Eu disse isso ao professor Rui!", "effects": [{"flag": "ff_embarazado"}, {"friendship": {"who": "goncalo", "value": 1}}, {"log": "Expliquei ao Gonçalo que 'embarazado' quer dizer grávido. Ele tinha dito isso ao professor Rui."}]},
+      "keep": {"text": "Contas-lhe na sexta-feira. Talvez.", "effects": [{"flag": "ff_embarazado"}, {"log": "Deixei o Gonçalo continuar a anunciar que está grávido. Pela ciência."}]}
     }
   },
   "goncalo_default": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Gonçalo", "text": "Hoy he aprendido tres palabras. Todas mal, pero con confianza.", "translation": "Today I learned three words. All wrong, but with confidence."}
+      "n1": {"speaker": "Gonçalo", "text": "Hoy he aprendido tres palabras. Todas mal, pero con confianza.", "translation": "Hoje aprendi três palavras. Todas mal, mas com confiança."}
     }
   },
   "tiago_homesick": {
@@ -174,9 +174,9 @@
         {"text": "\"Não é. Primeira noite. Passa.\"", "next": "ok"},
         {"text": "\"Aguenta até quarta.\"", "next": "wed"}
       ]},
-      "ok": {"speaker": "Tiago", "text": "...Ok. Ok.", "effects": [{"flag": "tiago_talked"}, {"friendship": {"who": "tiago", "value": 1}}, {"log": "Tiago has never slept away from home. Told him the first night is the worst one."}]},
+      "ok": {"speaker": "Tiago", "text": "...Ok. Ok.", "effects": [{"flag": "tiago_talked"}, {"friendship": {"who": "tiago", "value": 1}}, {"log": "O Tiago nunca tinha dormido fora de casa. Disse-lhe que a primeira noite é a pior."}]},
       "wed": {"speaker": "Tiago", "text": "Porquê quarta?", "next": "wed2"},
-      "wed2": {"text": "You do not know why Wednesday. It felt right.", "effects": [{"flag": "tiago_talked"}, {"log": "Told Tiago to hold on until Wednesday. No idea why."}]}
+      "wed2": {"text": "Não sabes porquê quarta. Pareceu-te bem.", "effects": [{"flag": "tiago_talked"}, {"log": "Disse ao Tiago para aguentar até quarta. Não faço ideia porquê."}]}
     }
   },
   "tiago_default": {
@@ -205,18 +205,18 @@
   "unai_school_pelota": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Unai", "text": "Baloncesto es aburrido. Pelota vasca es mejor. Jajaja.", "translation": "Basketball is boring. Basque pelota is better. Hahaha.", "choices": [
-        {"text": "\"Then teach me pelota. I'll teach you a crossover.\"", "next": "deal"},
+      "n1": {"speaker": "Unai", "text": "Baloncesto es aburrido. Pelota vasca es mejor. Jajaja.", "translation": "Basquetebol é uma seca. Pelota basca é melhor. Hahaha.", "choices": [
+        {"text": "\"Então ensina-me pelota. Eu ensino-te um crossover.\"", "next": "deal"},
         {"text": "\"Jajaja.\"", "next": "jaja"}
       ]},
-      "deal": {"speaker": "Unai", "text": "Trato. Jajaja.", "translation": "Deal. Hahaha.", "effects": [{"friendship": {"who": "unai", "value": 2}}, {"flag": "pelota_deal"}, {"log": "Made a deal with Unai: pelota lessons for basketball lessons."}]},
+      "deal": {"speaker": "Unai", "text": "Trato. Jajaja.", "translation": "Combinado. Hahaha.", "effects": [{"friendship": {"who": "unai", "value": 2}}, {"flag": "pelota_deal"}, {"log": "Fiz um acordo com o Unai: aulas de pelota em troca de aulas de basquetebol."}]},
       "jaja": {"speaker": "Unai", "text": "Jajaja."}
     }
   },
   "unai_school_default": {
     "start": "n1",
     "nodes": {
-      "n1": {"speaker": "Unai", "text": "Jajaja. ¿Has hablado con Iker? Habla mucho.", "translation": "Hahaha. Have you talked to Iker? He talks a lot."}
+      "n1": {"speaker": "Unai", "text": "Jajaja. ¿Has hablado con Iker? Habla mucho.", "translation": "Hahaha. Já falaste com o Iker? Ele fala muito."}
     }
   }
 }

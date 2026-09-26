@@ -40,27 +40,27 @@ func _ready() -> void:
 func show_main(can_continue: bool) -> void:
 	mode = "main"
 	title_label.text = "Kaixo!"
-	subtitle_label.text = "One week in Sarriguren.\nAn Erasmus+ school exchange, Stardew-style.  MVP build."
+	subtitle_label.text = "Uma semana em Sarriguren.\nUm intercâmbio escolar Erasmus+, ao estilo Stardew.  Versão MVP."
 	var items := []
 	if can_continue:
-		items.append(["Continue the week", continue_game])
-	items.append(["New week", new_game])
-	items.append(["Quit", quit_app])
+		items.append(["Continuar a semana", continue_game])
+	items.append(["Nova semana", new_game])
+	items.append(["Sair", quit_app])
 	_build(items)
 
 
 func show_pause() -> void:
 	mode = "pause"
 	title_label.text = "%s, %s" % [GameState.day_name(), GameState.time_string()]
-	subtitle_label.text = "Paused. The clock waits for you. Arantxa does not."
-	_build([["Resume", resume], ["Save", save], ["Save and quit to menu", quit_to_menu]])
+	subtitle_label.text = "Em pausa. O relógio espera por ti. A Arantxa não."
+	_build([["Retomar", resume], ["Guardar", save], ["Guardar e voltar ao menu", quit_to_menu]])
 
 
 func show_end(text: String) -> void:
 	mode = "end"
 	title_label.text = "Agur."
 	subtitle_label.text = text
-	_build([["Back to the menu", quit_to_menu]])
+	_build([["Voltar ao menu", quit_to_menu]])
 
 
 func _build(items: Array) -> void:

@@ -1,5 +1,5 @@
 extends Node2D
-## Owns the current map: builds tiles, spawns entities from data/maps/*.json, places the player.
+## Owns the current map: builds tiles, spawns props and entities from data/maps/*.json, places the player.
 
 const PlayerScene := preload("res://scenes/player.tscn")
 const NpcScene := preload("res://scenes/npc.tscn")
@@ -9,6 +9,7 @@ const PlotScene := preload("res://scenes/garden_plot.tscn")
 const BedScene := preload("res://scenes/bed.tscn")
 
 var ground: TileMapLayer
+var decor: TileMapLayer
 var entities: Node2D
 var player: CharacterBody2D
 var camera: Camera2D
@@ -20,6 +21,9 @@ func _ready() -> void:
 	ground = TileMapLayer.new()
 	ground.name = "Ground"
 	add_child(ground)
+	decor = TileMapLayer.new()
+	decor.name = "Decor"
+	add_child(decor)
 	entities = Node2D.new()
 	entities.name = "Entities"
 	entities.y_sort_enabled = true
@@ -60,7 +64,10 @@ func load_map(id: String, spawn: String) -> void:
 		if child != player:
 			entities.remove_child(child)
 			child.queue_free()
-	map_size = MapBuilder.fill_layer(ground, data.get("rows", []))
+	var built := MapBuilder.build(ground, decor, data)
+	map_size = built["size"]
+	for p in built["props"]:
+		_spawn_prop(p)
 	for e in data.get("entities", []):
 		_spawn_entity(e)
 	var spawns: Dictionary = data.get("spawns", {})
@@ -75,11 +82,21 @@ func load_map(id: String, spawn: String) -> void:
 	Events.location_changed.emit(str(data.get("name", id)))
 
 
+func _spawn_prop(p: Dictionary) -> void:
+	var node := Prop.new()
+	node.position = MapBuilder.point_to_world(Vector2(float(p.get("x", 0)), float(p.get("y", 0))))
+	entities.add_child(node)
+	node.setup(p)
+
+
 func _spawn_entity(e: Dictionary) -> void:
 	if not Conditions.check(e.get("if", {})):
 		return
 	var node: Node2D
 	match str(e.get("type", "")):
+		"prop":
+			_spawn_prop(e)
+			return
 		"npc":
 			node = NpcScene.instantiate()
 		"spot":

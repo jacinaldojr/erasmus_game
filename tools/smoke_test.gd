@@ -47,7 +47,19 @@ func _lint_content() -> void:
 			if str(r).length() != width:
 				uniform = false
 		_check(uniform, "map '%s' rows all %d wide" % [map_id, width])
+		var decor_rows: Array = m.get("decor", [])
+		if not decor_rows.is_empty():
+			var decor_ok := decor_rows.size() == rows.size()
+			for r in decor_rows:
+				if str(r).length() != width:
+					decor_ok = false
+			_check(decor_ok, "map '%s' decor layer matches ground size" % map_id)
 		for e in m.get("entities", []):
+			if e.get("type") == "prop":
+				_check(Prop.SPECS.has(str(e.get("sprite", ""))), "map '%s' prop '%s' is known" % [map_id, e.get("sprite", "")])
+			if e.get("type") == "npc" and str(e.get("shape", "person")) == "person":
+				var cast_id := str(e.get("sprite", e.get("id", "")))
+				_check(not Content.cast_entry(cast_id).is_empty(), "map '%s' npc '%s' has a cast entry" % [map_id, cast_id])
 			var ex := int(e.get("x", -1))
 			var ey := int(e.get("y", -1))
 			_check(ex >= 0 and ey >= 0 and ey < rows.size() and ex < width, "map '%s' entity %s inside bounds" % [map_id, e.get("name", e.get("type", "?"))])
@@ -57,6 +69,11 @@ func _lint_content() -> void:
 				_check(Content.maps.get(to, {}).get("spawns", {}).has(str(e.get("spawn", ""))), "door in '%s' targets known spawn '%s' in '%s'" % [map_id, e.get("spawn", ""), to])
 			for d in e.get("dialogues", []):
 				_check(Content.dialogues.has(str(d.get("id", ""))), "map '%s' references dialogue '%s'" % [map_id, d.get("id", "")])
+	for cast_id in Content.cast:
+		if str(cast_id).begins_with("_"):
+			continue
+		var sheet := str(Content.cast[cast_id].get("sheet", ""))
+		_check(ResourceLoader.exists(sheet), "cast '%s' sheet exists" % cast_id)
 	var known_effects := ["energy", "battery", "time", "flag", "unflag", "flag_today", "stamp", "word", "friendship", "item", "remove_item", "count", "notify", "log", "message", "end_day"]
 	for id in Content.dialogues:
 		var d: Dictionary = Content.dialogues[id]
@@ -128,10 +145,17 @@ func _run() -> void:
 	_check(GameState.minutes == GameState.DAY_START_MINUTES, "Monday starts at 07:00")
 
 	print("== Monday ==")
-	Events.map_change_requested.emit("school", "from_home")
+	Events.map_change_requested.emit("street", "from_home")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_check(main.world.map_id == "street", "street map loaded")
+	_check(main.world.entities.get_child_count() > 10, "street props and entities spawned (%d)" % main.world.entities.get_child_count())
+	_check(main.world.decor.get_used_cells().size() > 20, "street decor tiles placed (%d)" % main.world.decor.get_used_cells().size())
+	Events.map_change_requested.emit("school", "from_street")
 	await get_tree().process_frame
 	await get_tree().process_frame
 	_check(main.world.map_id == "school", "school map loaded")
+	_check(main.world.player.sprite.texture != null, "player has a character sheet")
 	_check(main.world.entities.get_child_count() > 10, "school entities spawned (%d)" % main.world.entities.get_child_count())
 
 	for id in ["iker_1", "iker_2", "iker_3"]:

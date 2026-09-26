@@ -35,8 +35,9 @@ Run the smoke test after every change to `src/` or `data/`. It runs Sunday and M
 
 - `src/autoload/` singletons in load order: `Events` (signal bus, also registers input actions in code), `Content` (loads all JSON), `GameState` (clock, stats, flags, stamps, save dict), `DialogueRunner`, `SaveManager`.
 - `src/core/conditions.gd` is the `{"flag": ..}` condition language shared by dialogues and map entities.
-- `src/world/` builds maps from ASCII rows in `data/maps/*.json`; the TileSet is created at runtime from `assets/tiles/tileset.png`.
-- `src/entities/` npc, spot, door, garden_plot, bed. Each has `setup(dict)` and, if interactive, `interact(player)`.
+- `src/world/` builds maps from ASCII `rows` (ground) and `decor` layers in `data/maps/*.json`. One TileSet is created at runtime from three atlases: the generated interior `assets/tiles/tileset.png`, and Lakiiah's `Ground Tiles.png` and `House Tiles.png`. Paths, tilled soil and fences are autotiled from their neighbours; the legends are documented at the top of `map_builder.gd`.
+- `src/entities/` npc, spot, door, garden_plot, bed, prop (y-sorted scenery with collider) and `character_sprite.gd` (animated 8-direction 32x32 sheet with recolouring). Each entity has `setup(dict)` and, if interactive, `interact(player)`.
+- `data/cast.json` maps a character id to a sprite sheet and a recolour map (exact hex -> hex). NPCs use `sprite` or fall back to their `id`; the player is `vinicius`.
 - `src/ui/` every panel is built in code (no .tscn) and styled through `UiStyle`. `GameUI` routes keyboard input between panels and locks the clock with `GameState.lock_ui()`.
 - `scenes/` are thin shells that only attach scripts and collision shapes.
 - `data/` is the content: maps, dialogues, passport, words, texts. Adding a scene usually means editing JSON only.
@@ -46,7 +47,14 @@ Run the smoke test after every change to `src/` or `data/`. It runs Sunday and M
 
 - GDScript with tabs, typed where cheap, `##` doc comments at the top of each file.
 - No editor-only state: build UI and maps in code or JSON so diffs stay reviewable.
+- Player-facing text (narration, choices, logs, translations, UI) is European Portuguese (pt-PT: "telemóvel", "autocarro", "tu" forms). Spanish and Basque NPC lines stay in their language, with a Portuguese `translation`. Ids, code and comments stay in English.
 - Dialogue and map ids are snake_case; per-day flags use `GameState.set_flag_today`.
 - Awarding a stamp goes through `GameState.earn_stamp` (or a `{"stamp": id}` effect) so the HUD, log and toast stay in sync.
 - New effect or condition keys must be added to `DialogueRunner.apply_effects` / `Conditions.check` and to the `known_effects` list in `tools/smoke_test.gd`.
 - Do not commit `.godot/`. Do commit `*.import` and `*.uid` files that Godot generates.
+
+## Assets
+
+- Exterior tiles: "Cozy RPG Tileset" by Lakiiah (credit in its README; https://lakiah.itch.io/). No water or interior tiles in the pack, so interiors use the generated atlas and the lake is off-screen.
+- Characters: `assets/characters/{kids,adults}/*_32x32_idle-run.png`, 6 columns x 16 rows: rows 0-7 idle, 8-15 run, directions S, SW, W, NW, N, NE, E, SE. No licence file was supplied with them; check before distributing.
+- To add a character, add a `data/cast.json` entry. To recolour, list the sheet's exact outfit colours (the `_note` in cast.json has the kid sheets') and map them to new ones.

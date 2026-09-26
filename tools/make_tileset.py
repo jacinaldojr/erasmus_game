@@ -1,69 +1,73 @@
-"""Generate the placeholder 16x16 tile atlas (pure stdlib, no Pillow).
+"""Generate the interior 16x16 tile atlas (pure stdlib, no Pillow).
+Exterior tiles come from the Lakiiah "Cozy RPG Tileset"; this atlas only covers indoor
+floors and walls, drawn to match its palette (dark warm outlines, soft fills).
 Run: python tools/make_tileset.py  -> assets/tiles/tileset.png
-Tile order must match MapBuilder.T in src/world/map_builder.gd."""
+Tile order must match MapBuilder.I in src/world/map_builder.gd."""
 import struct, zlib, random, pathlib
 
 TILE = 16
 def hexc(h): h = h.lstrip('#'); return tuple(int(h[i:i+2], 16) for i in (0, 2, 4)) + (255,)
 
-def solid(base, speck=None, n=6, seed=1):
-    px = [[base] * TILE for _ in range(TILE)]
-    if speck:
-        rnd = random.Random(seed)
-        for _ in range(n):
-            x, y = rnd.randrange(TILE), rnd.randrange(TILE)
-            px[y][x] = speck
+def solid(base):
+    return [[base] * TILE for _ in range(TILE)]
+
+def wood_floor():
+    base = hexc('#c99a6b')
+    px = solid(base)
+    line, seam, light, grain = hexc('#a97a4f'), hexc('#b98a5c'), hexc('#d6ac7f'), hexc('#c08f60')
+    rnd = random.Random(7)
+    for x in range(TILE):
+        px[7][x] = line; px[15][x] = line
+    for y in range(0, 7): px[y][3] = seam
+    for y in range(8, 15): px[y][11] = seam
+    for _ in range(6):
+        x, y = rnd.randrange(TILE), rnd.randrange(TILE)
+        if px[y][x] == base: px[y][x] = light
+    for y in (2, 4, 10, 12):
+        x0 = rnd.randrange(0, 10)
+        for x in range(x0, x0 + 4):
+            if px[y][x] == base: px[y][x] = grain
     return px
 
-def floor_tile():
-    px = solid(hexc('#d8c9a3'))
+def wall():
+    px = solid(hexc('#e9dcc3'))
+    top, brick, skirt, skirt_dark = hexc('#c9b89a'), hexc('#dccbb0'), hexc('#8a5a3a'), hexc('#5a3a24')
+    for x in range(TILE):
+        px[0][x] = top
+        for y in range(11, 16): px[y][x] = skirt
+        px[11][x] = skirt_dark
+    for y in (3, 7):
+        for x in range(TILE):
+            if (x + (0 if y == 3 else 4)) % 8 == 0: px[y][x] = brick
+    return px
+
+def carpet():
+    px = solid(hexc('#a84a5a'))
+    border, dot = hexc('#7e3244'), hexc('#c46a7a')
     for i in range(TILE):
-        px[0][i] = hexc('#c4b58f'); px[i][0] = hexc('#c4b58f')
+        px[0][i] = border; px[15][i] = border; px[i][0] = border; px[i][15] = border
+    for y in (4, 8, 12):
+        for x in (4, 8, 12): px[y][x] = dot
     return px
 
-def wall_tile():
-    px = solid(hexc('#4a4a5a'))
-    for i in range(TILE):
-        for y in range(4): px[y][i] = hexc('#6a6a7a')
-        px[8][i] = hexc('#3a3a48')
-    for y in range(4, 8): px[y][7] = hexc('#3a3a48')
-    for y in range(9, 16): px[y][3] = hexc('#3a3a48'); px[y][11] = hexc('#3a3a48')
+def mat():
+    px = solid(hexc('#c9a86b'))
+    stripe = hexc('#a8884d')
+    for y in range(TILE):
+        if y % 4 == 1:
+            for x in range(2, 14): px[y][x] = stripe
     return px
 
-def water_tile():
-    px = solid(hexc('#3f7fbf'))
-    for x in range(2, 8): px[4][x] = hexc('#6aa5dd')
-    for x in range(8, 14): px[11][x] = hexc('#6aa5dd')
-    return px
-
-def tree_tile():
-    px = solid(hexc('#5da84a'))
+def tiled_floor():
+    px = solid(hexc('#d8d2c6'))
+    alt, grout = hexc('#c7c0b2'), hexc('#b0a898')
     for y in range(TILE):
         for x in range(TILE):
-            if (x - 7.5) ** 2 + (y - 6) ** 2 < 42: px[y][x] = hexc('#2f6b32')
-            if (x - 6) ** 2 + (y - 5) ** 2 < 8: px[y][x] = hexc('#3f8a42')
-    for y in range(11, 16):
-        for x in range(6, 10): px[y][x] = hexc('#5a3a1e')
+            if ((x // 8) + (y // 8)) % 2: px[y][x] = alt
+            if x % 8 == 0 or y % 8 == 0: px[y][x] = grout
     return px
 
-def mat_tile():
-    px = solid(hexc('#c9b27c'))
-    for y in range(3, 13):
-        for x in range(2, 14): px[y][x] = hexc('#b0603c')
-    for x in range(4, 12): px[7][x] = hexc('#d98a5c'); px[8][x] = hexc('#d98a5c')
-    return px
-
-tiles = [
-    solid(hexc('#5da84a'), hexc('#6fbf5a'), 8, 1),   # 0 GRASS
-    floor_tile(),                                    # 1 FLOOR
-    wall_tile(),                                     # 2 WALL
-    solid(hexc('#c9b27c'), hexc('#b39c66'), 5, 2),   # 3 PATH
-    solid(hexc('#7a5230'), hexc('#5e3d22'), 10, 3),  # 4 SOIL
-    water_tile(),                                    # 5 WATER
-    tree_tile(),                                     # 6 TREE
-    mat_tile(),                                      # 7 MAT (door)
-    solid(hexc('#a03c5a'), hexc('#b8506e'), 6, 4),   # 8 CARPET
-]
+tiles = [wood_floor(), wall(), carpet(), mat(), tiled_floor()]   # I.WOOD, WALL, CARPET, MAT, TILED
 
 W, H = TILE * len(tiles), TILE
 raw = bytearray()

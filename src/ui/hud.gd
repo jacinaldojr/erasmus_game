@@ -35,19 +35,19 @@ func _ready() -> void:
 	top_right.custom_minimum_size = Vector2(150, 0)
 	var grid := GridContainer.new()
 	grid.columns = 2
-	grid.add_child(UiStyle.label("Energy", 8))
+	grid.add_child(UiStyle.label("Energia", 8))
 	energy_bar = UiStyle.bar(UiStyle.GOOD)
 	grid.add_child(energy_bar)
-	grid.add_child(UiStyle.label("Battery", 8))
+	grid.add_child(UiStyle.label("Bateria", 8))
 	battery_bar = UiStyle.bar(UiStyle.INFO)
 	grid.add_child(battery_bar)
-	grid.add_child(UiStyle.label("Stamps", 8))
+	grid.add_child(UiStyle.label("Carimbos", 8))
 	stamps_label = UiStyle.label("0/12", 8, UiStyle.ACCENT)
 	grid.add_child(stamps_label)
 	top_right.add_child(grid)
 	add_child(top_right)
 
-	var hint := UiStyle.label("WASD move   E talk   Tab passport   P phone   Esc menu", 7, UiStyle.MUTED)
+	var hint := UiStyle.label("WASD mover   E falar   Tab passaporte   P telemóvel   Esc menu", 7, UiStyle.MUTED)
 	hint.position = Vector2(8, 360 - 16)
 	add_child(hint)
 

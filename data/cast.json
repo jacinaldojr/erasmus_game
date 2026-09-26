@@ -1,0 +1,27 @@
+{
+  "_note": "Sheets are 32x32 idle-run (6x16). recolor maps exact source hex -> new hex so four kid sheets can play a whole class. Sheet outfit colours: Kenji blazer 2e4070/1e2a52/10142c, hair 2e2c3e/1e1c2c/100e18; Marcus jumper 3c8456/286040/143226, hair 342420/201616/0e0a0c.",
+
+  "vinicius": {"sheet": "res://assets/characters/kids/02_Marcus_boy_jumper_32x32_idle-run.png",
+               "recolor": {"3c8456": "3462b8", "286040": "24488e", "143226": "132a58"}},
+
+  "unai":     {"sheet": "res://assets/characters/kids/01_Kenji_boy_blazer_32x32_idle-run.png",
+               "recolor": {"2e4070": "b03434", "1e2a52": "7d2323", "10142c": "3f1010"}},
+  "duarte":   {"sheet": "res://assets/characters/kids/01_Kenji_boy_blazer_32x32_idle-run.png"},
+  "tiago":    {"sheet": "res://assets/characters/kids/01_Kenji_boy_blazer_32x32_idle-run.png",
+               "recolor": {"2e4070": "8ecae6", "1e2a52": "5f9fc4", "10142c": "2f5f80",
+                           "2e2c3e": "6e4a2e", "1e1c2c": "4e3220", "100e18": "2e1c10"}},
+  "goncalo":  {"sheet": "res://assets/characters/kids/02_Marcus_boy_jumper_32x32_idle-run.png",
+               "recolor": {"3c8456": "e0b43a", "286040": "b08a20", "143226": "6e5410"}},
+  "iker":     {"sheet": "res://assets/characters/kids/02_Marcus_boy_jumper_32x32_idle-run.png",
+               "recolor": {"3c8456": "2a9d8f", "286040": "1e766b", "143226": "104840",
+                           "342420": "5a3a22", "201616": "3a2414", "0e0a0c": "1c1008"}},
+  "rafael":   {"sheet": "res://assets/characters/kids/02_Marcus_boy_jumper_32x32_idle-run.png",
+               "recolor": {"3c8456": "8a6a3a", "286040": "5e4626", "143226": "352614"}},
+  "leonor":   {"sheet": "res://assets/characters/kids/03_Mia_girl_longhair_32x32_idle-run.png"},
+  "nahia":    {"sheet": "res://assets/characters/kids/04_Aiko_girl_twintails_32x32_idle-run.png"},
+
+  "arantxa":  {"sheet": "res://assets/characters/adults/08_Mum_parent_woman_32x32_idle-run.png"},
+  "inaki":    {"sheet": "res://assets/characters/adults/07_Dad_parent_man_32x32_idle-run.png"},
+  "maite":    {"sheet": "res://assets/characters/adults/06_MsOkafor_teacher_woman_32x32_idle-run.png"},
+  "aitona":   {"sheet": "res://assets/characters/adults/05_MrHarris_teacher_man_32x32_idle-run.png"}
+}

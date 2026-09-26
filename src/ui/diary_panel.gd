@@ -35,7 +35,7 @@ func _ready() -> void:
 func open(day: int, text: String) -> void:
 	title_label.text = "Viagens na Terra dos Outros  -  %s" % GameState.DAY_NAMES[clampi(day, 0, 6)]
 	text_label.text = text
-	next_button.text = "Sleep  (E / Enter)" if day < GameState.LAST_DAY else "Go home  (E / Enter)"
+	next_button.text = "Dormir  (E / Enter)" if day < GameState.LAST_DAY else "Voltar para casa  (E / Enter)"
 	visible = true
 	next_button.grab_focus()
 

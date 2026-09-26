@@ -108,7 +108,7 @@ func translate_current() -> String:
 		return tr
 	if GameState.use_translator():
 		_translated = true
-		GameState.log_event("Used the translator app.")
+		GameState.log_event("Usei a app de tradução.")
 		return tr
 	return ""
 

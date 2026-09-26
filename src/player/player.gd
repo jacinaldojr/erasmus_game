@@ -4,20 +4,32 @@ extends CharacterBody2D
 const SPEED := 90.0
 const TIRED_SPEED_FACTOR := 0.6
 const PROBE_DISTANCE := 13.0
+const CAST_ID := "vinicius"
 
 var facing := Vector2.DOWN
+var sprite: CharacterSprite
 @onready var interact_area: Area2D = $InteractArea
+
+
+func _ready() -> void:
+	sprite = CharacterSprite.new()
+	var cast := Content.cast_entry(CAST_ID)
+	sprite.setup(str(cast.get("sheet", "")), cast.get("recolor", {}))
+	add_child(sprite)
+	move_child(sprite, 0)
 
 
 func _physics_process(_delta: float) -> void:
 	if GameState.is_ui_locked():
 		velocity = Vector2.ZERO
+		sprite.moving = false
 		return
 	var dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if dir != Vector2.ZERO:
 		facing = _snap4(dir)
 		interact_area.position = facing * PROBE_DISTANCE
-		queue_redraw()
+		sprite.facing = dir
+	sprite.moving = dir != Vector2.ZERO
 	var speed := SPEED * (TIRED_SPEED_FACTOR if GameState.energy <= 10 else 1.0)
 	velocity = dir * speed
 	move_and_slide()
@@ -50,17 +62,3 @@ static func _snap4(v: Vector2) -> Vector2:
 	if absf(v.x) > absf(v.y):
 		return Vector2.RIGHT if v.x > 0 else Vector2.LEFT
 	return Vector2.DOWN if v.y > 0 else Vector2.UP
-
-
-func _draw() -> void:
-	draw_circle(Vector2(0, 8), 5.0, Color(0, 0, 0, 0.25))
-	draw_rect(Rect2(-5, -4, 10, 12), Color.html("#2f5fbf"))          # hoodie
-	draw_rect(Rect2(-3, 6, 2, 3), Color.html("#333333"))              # legs
-	draw_rect(Rect2(1, 6, 2, 3), Color.html("#333333"))
-	draw_circle(Vector2(0, -8), 5.0, Color.html("#e8b894"))           # head
-	draw_rect(Rect2(-5, -13, 10, 4), Color.html("#2b1d12"))           # hair
-	if facing == Vector2.DOWN or facing == Vector2.LEFT or facing == Vector2.RIGHT:
-		var dx := 0.0 if facing == Vector2.DOWN else (2.0 if facing == Vector2.RIGHT else -2.0)
-		draw_rect(Rect2(-2 + dx, -8, 1, 1), Color.BLACK)
-		draw_rect(Rect2(1 + dx, -8, 1, 1), Color.BLACK)
-	draw_string(ThemeDB.fallback_font, Vector2(-4, 4), "25", HORIZONTAL_ALIGNMENT_LEFT, -1, 6, Color.WHITE)

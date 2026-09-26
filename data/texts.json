@@ -11,7 +11,7 @@
   "dad_texts": [
     "Puzzle de hoje: brancas jogam, mate em 2. Dorme bem.",
     "Puzzle: a torre está pendurada. Vês?",
-    "Puzzle: sacrifício de cavalo em f7. Classico.",
+    "Puzzle: sacrifício de cavalo em f7. Clássico.",
     "Puzzle: xeque descoberto. Olha para o bispo.",
     "Puzzle: final de peões. Conta as casas.",
     "Puzzle: mate em 3. Este é difícil. Boa viagem amanhã.",
@@ -19,16 +19,16 @@
   ],
   "diary": {
     "0": {
-      "intro": "Sunday. Ten hours on a bus, plus one the clock stole at the border. The host families were waiting with signs. Mine said VINICIUS, no accent, which is fair.",
-      "outro": "Under the pillow: a tarot card. The Fool. A traveller with a bag stepping off a cliff, a small white dog at his heels. On the back, a riddle in Spanish. Txuri is watching me from the doorway."
+      "intro": "Domingo. Dez horas de autocarro, mais uma que o relógio roubou na fronteira. As famílias de acolhimento estavam à espera com cartazes. O meu dizia VINICIUS, sem acento, o que é justo.",
+      "outro": "Debaixo da almofada: uma carta de tarot. O Louco. Um viajante com uma trouxa a dar um passo para o precipício, com um cãozinho branco atrás dele. No verso, uma adivinha em espanhol. O Txuri está a olhar para mim da porta."
     },
     "1": {
-      "intro": "Monday. IES Sarriguren. Nobody understands me yet, but a basketball is a basketball in any language.",
-      "outro": "Viagens na Terra dos Outros, page two. The riddle on the card mentions a star with five points and a wall. Tomorrow: Pamplona."
+      "intro": "Segunda-feira. IES Sarriguren. Ainda ninguém me percebe, mas uma bola de basquetebol é uma bola de basquetebol em qualquer língua.",
+      "outro": "Viagens na Terra dos Outros, página dois. A adivinha da carta fala de uma estrela de cinco pontas e de uma muralha. Amanhã: Pamplona."
     },
     "default": {
-      "intro": "Another day in Sarriguren.",
-      "outro": "(The rest of the week is not in this build yet. Tomorrow will look a lot like today, which is also how weeks work.)"
+      "intro": "Mais um dia em Sarriguren.",
+      "outro": "(O resto da semana ainda não está nesta versão. Amanhã vai ser muito parecido com hoje, que é também como as semanas funcionam.)"
     }
   }
 }

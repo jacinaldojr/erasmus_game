@@ -11,12 +11,12 @@ func interact(_player: Node) -> void:
 	if GameState.can_sleep():
 		if GameState.day == 0:
 			GameState.set_flag("fool_card")
-		var reason := "Went to bed at %s." % GameState.time_string()
+		var reason := "Fui para a cama às %s." % GameState.time_string()
 		GameState.end_day(reason)
 	elif GameState.day == 0:
-		DialogueRunner.start_line("", "Too early. Arantxa said dinner is at 21:30, and you are not sleeping on an empty stomach. Not tonight.")
+		DialogueRunner.start_line("", "Ainda é cedo. A Arantxa disse que o jantar é às 21:30, e tu não vais dormir de barriga vazia. Hoje não.")
 	else:
-		DialogueRunner.start_line("", "It is %s. Sleep after dinner, or after 22:00." % GameState.time_string())
+		DialogueRunner.start_line("", "São %s. Dorme depois do jantar, ou depois das 22:00." % GameState.time_string())
 
 
 func _draw() -> void:

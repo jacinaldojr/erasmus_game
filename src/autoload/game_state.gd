@@ -2,7 +2,7 @@ extends Node
 ## Single source of truth for a run: clock, stats, flags, passport progress, inventory.
 ## Everything here is plain data so SaveManager can serialise it.
 
-const DAY_NAMES := ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const DAY_NAMES := ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
 const LAST_DAY := 6
 const DAY_START_MINUTES := 7 * 60
 const DAY_END_MINUTES := 23 * 60 + 30
@@ -108,7 +108,7 @@ func advance_time(amount: int) -> void:
 		_on_minute(minutes)
 		if minutes >= DAY_END_MINUTES:
 			Events.time_changed.emit(day, minutes)
-			end_day("It is past 23:30. You fell asleep with your shoes on.")
+			end_day("Já passa das 23:30. Adormeceste de sapatos calçados.")
 			return
 	Events.time_changed.emit(day, minutes)
 
@@ -119,7 +119,7 @@ func _on_minute(m: int) -> void:
 	elif m == 22 * 60:
 		receive_message("Pai", Content.dad_text_for_day(day))
 	elif m == 21 * 60 + 30 and not has_flag_today("dinner_done"):
-		Events.notify.emit("21:30. Dinner time at Unai's house.")
+		Events.notify.emit("21:30. Hora de jantar em casa do Unai.")
 
 
 # --- Stats ------------------------------------------------------------------
@@ -129,7 +129,7 @@ func change_energy(delta: int) -> void:
 	energy = clampi(energy + delta, 0, 100)
 	Events.energy_changed.emit(energy)
 	if energy == 0 and before > 0:
-		Events.notify.emit("You are exhausted. Find food, or go to bed.")
+		Events.notify.emit("Estás exausto. Arranja comida ou vai para a cama.")
 
 
 func change_battery(delta: int) -> void:
@@ -143,7 +143,7 @@ func can_use_translator() -> bool:
 
 func use_translator() -> bool:
 	if not can_use_translator():
-		Events.notify.emit("Phone battery too low for the translator app.")
+		Events.notify.emit("Bateria do telemóvel demasiado fraca para a app de tradução.")
 		return false
 	change_battery(-TRANSLATOR_BATTERY_COST)
 	used_translator_today = true
@@ -182,9 +182,9 @@ func earn_stamp(stamp_id: String) -> void:
 		return
 	stamps.append(stamp_id)
 	var label := Content.stamp_name(stamp_id)
-	log_event("Passport stamp: %s" % label)
+	log_event("Carimbo no passaporte: %s" % label)
 	Events.stamp_earned.emit(stamp_id)
-	Events.notify.emit("Passport stamp earned: %s (%d/12)" % [label, stamps.size()])
+	Events.notify.emit("Novo carimbo no passaporte: %s (%d/12)" % [label, stamps.size()])
 
 
 func knows_word(word_id: String) -> bool:
@@ -197,8 +197,8 @@ func learn_word(word_id: String) -> void:
 	words.append(word_id)
 	change_battery(WORD_BATTERY_BONUS)
 	Events.word_learned.emit(word_id)
-	Events.notify.emit("New Basque word: %s = %s" % [Content.word_display(word_id), Content.word_meaning(word_id)])
-	log_event("Learned the Basque word '%s' (%s)." % [Content.word_display(word_id), Content.word_meaning(word_id)])
+	Events.notify.emit("Nova palavra em basco: %s = %s" % [Content.word_display(word_id), Content.word_meaning(word_id)])
+	log_event("Aprendi a palavra basca '%s' (%s)." % [Content.word_display(word_id), Content.word_meaning(word_id)])
 	if words.size() >= WORDS_FOR_STAMP:
 		earn_stamp("basque_5")
 
@@ -234,7 +234,7 @@ func remove_item(item_id: String, count: int = 1) -> bool:
 func receive_message(sender: String, text: String) -> void:
 	messages.append({"day": day, "minutes": minutes, "from": sender, "text": text})
 	Events.message_received.emit(sender, text)
-	Events.notify.emit("[Phone] %s: %s" % [sender, text])
+	Events.notify.emit("[Telemóvel] %s: %s" % [sender, text])
 
 
 func log_event(text: String) -> void:

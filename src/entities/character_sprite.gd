@@ -45,7 +45,7 @@ static func direction_row(v: Vector2) -> int:
 	if v == Vector2.ZERO:
 		return 0
 	var a := atan2(v.x, v.y)  # 0 = down, clockwise negative
-	var idx := roundi(-a / (PI / 4.0)) % 8
+	var idx := roundi(a / (PI / 4.0)) % 8
 	if idx < 0:
 		idx += 8
 	return idx

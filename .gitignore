@@ -1,3 +1,4 @@
 .godot/
 export/
 *.tmp
+.vscode/settings.json
